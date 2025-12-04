@@ -30,5 +30,6 @@ export const deleteLeaveType = async (leave_type_id: number) => {
     if (!existingLeaveType) {
         throw new Error('Leave type not found');
     }
-    return await leaveTypeRepository.deleteLeaveType(leave_type_id);
+    await leaveTypeRepository.deleteLeaveType(leave_type_id);
+    return { message: 'Leave type deleted successfully' };
 };

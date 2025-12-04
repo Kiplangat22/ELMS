@@ -18,7 +18,7 @@ const initializeApp = () => {
 
     // Register routes
     //app.use('/api/employees', employeesRoutes);
-    app.use('/api/departments', departmentRoutes);
+    //app.use('/api/departments', departmentRoutes);
     app.use('/api/leave-types', LeaveTypeRoutes);
     app.use('/api/leave-balances', leaveBalanceRoutes);
     app.use('/api/leave-requests', LeaveRequestRoutes);

@@ -4,7 +4,7 @@ import Error from './components/Error'
 import {Register} from "./components/auth/Register";
 import { Login } from './components/auth/Login'
 import LandingPage from './pages/LandingPage'
-import { ServicesPage } from './pages/ServicesPage';
+// import { ServicesPage } from './pages/ServicesPage';
 import { AboutPage } from "./pages/AboutPage";
 import { Verification } from "./components/auth/Verification";
 import Dashboard from "./pages/Dashboard";

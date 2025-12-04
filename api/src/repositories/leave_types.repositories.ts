@@ -11,9 +11,10 @@ export const getLeaveTypeById = async (leave_type_id: number): Promise<LeaveType
     const pool = await getPool();
     const result = await pool
         .request()
-        .input('id', leave_type_id)
+        .input('leave_type_id', leave_type_id)
         .query('SELECT * FROM Leave_Type WHERE leave_type_id = @leave_type_id');
     return result.recordset[0];
+    
 };
 
 export const createLeaveType = async (leaveType: NewLeaveType) => {
@@ -43,6 +44,6 @@ export const deleteLeaveType = async (leave_type_id: number) => {
     const pool = await getPool();
     await pool
         .request()
-        .input('id', leave_type_id)
+        .input('leave_type_id', leave_type_id)   // <-- FIXED
         .query('DELETE FROM Leave_Type WHERE leave_type_id = @leave_type_id');
 };

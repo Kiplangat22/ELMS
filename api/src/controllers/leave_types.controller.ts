@@ -41,7 +41,7 @@ export const createLeaveType = async (req: Request, res: Response) => {
 };
 
 export const updateLeaveType = async (req: Request, res: Response) => {
-    const id = Number.parseInt(req.params.leave_type_id);
+    const id = Number.parseInt(req.params.id); // FIXED
     const leaveType = req.body;
     try {
         const result = await leaveTypeServices.updateLeaveType(id, leaveType);
@@ -60,15 +60,15 @@ export const updateLeaveType = async (req: Request, res: Response) => {
 };
 
 export const deleteLeaveType = async (req: Request, res: Response) => {
-    const id = Number.parseInt(req.params.leave_type_id);
+    const id = Number(req.params.id);
     try {
         const result = await leaveTypeServices.deleteLeaveType(id);
-        res.status(204).json(result);
+        res.status(200).json(result);
     } catch (error: any) {
         if (error.message === 'Leave type not found') {
-            return res.status(404).json({ message: 'Leave type not found' });
+            res.status(404).json({ message: 'Leave type not found' });
         } else {
-            res.status(500).json({ error: error.message });
+            res.status(500).json({ message: 'Internal server error' });
         }
     }
 };
