@@ -1,13 +1,34 @@
-import Navbar from "../components/nav/Navbar"
-import {Footer} from "../components/footer/Footer"
+import Navbar from "../components/nav/Navbar";
+import { Footer } from "../components/footer/Footer";
+import { useEffect, useState } from "react";
+import { leaveTypeService } from "../services/leaveType.service";
 
 const Dashboard = () => {
+    const [leaveTypes, setLeaveTypes] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchLeaveTypes = async () => {
+            try {
+                const data = await leaveTypeService.getAll();
+                setLeaveTypes(data);
+            } catch (error) {
+                console.error("Failed to fetch leave types:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchLeaveTypes();
+    }, []);
+
     return (
         <>
             <Navbar />
             <div className="min-h-screen p-8 bg-base-200">
                 <h1 className="text-4xl font-bold mb-8 text-gray-800">Employee Dashboard</h1>
 
+                {/* STAT CARDS */}
                 <div className="stats stats-vertical lg:stats-horizontal shadow w-full mb-8">
                     <div className="stat">
                         <div className="stat-title">Available Leave</div>
@@ -28,6 +49,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
+                {/* QUICK ACTION CARDS */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     <div className="card bg-base-100 shadow-xl">
                         <div className="card-body">
@@ -60,7 +82,8 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="card bg-base-100 shadow-xl">
+                {/* RECENT ACTIVITY TABLE */}
+                <div className="card bg-base-100 shadow-xl mb-10">
                     <div className="card-body">
                         <h2 className="card-title text-2xl mb-4">Recent Activity</h2>
                         <div className="overflow-x-auto">
@@ -101,10 +124,45 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* LEAVE TYPES FETCHED FROM BACKEND */}
+                <div className="card bg-base-100 shadow-xl">
+                    <div className="card-body">
+                        <h2 className="card-title text-2xl mb-4">Available Leave Types</h2>
+
+                        {loading ? (
+                            <p>Loading...</p>
+                        ) : (
+                            <div className="overflow-x-auto">
+                                <table className="table table-zebra">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Type Name</th>
+                                            <th>Description</th>
+                                            <th>Default Days</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {leaveTypes.map((lt) => (
+                                            <tr key={lt.leave_type_id}>
+                                                <td>{lt.leave_type_id}</td>
+                                                <td>{lt.type_name}</td>
+                                                <td>{lt.description || "—"}</td>
+                                                <td>{lt.default_days ?? "—"}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
+                    </div>
+                </div>
             </div>
+
             <Footer />
         </>
-    )
-}
+    );
+};
 
-export default Dashboard
+export default Dashboard;
