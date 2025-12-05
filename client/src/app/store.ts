@@ -2,6 +2,8 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { usersAPI } from "../features/auth/userAPI";
+import { loginAPI } from "../features/auth/LoginAPI";
+import userSllice from "../features/auth/userSlice";
 
 const persistConfig = {
   key: "root",
@@ -13,6 +15,8 @@ const persistConfig = {
 // Combine all reducers into one root reducer
 const rootReducer = combineReducers({
   [usersAPI.reducerPath]: usersAPI.reducer,
+  [loginAPI.reducerPath]: loginAPI.reducer,
+  user: userSllice,
 });
 
 // Wrap rootReducer with persistReducer
@@ -24,7 +28,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false, 
-    }).concat(usersAPI.middleware),
+    }).concat(usersAPI.middleware, loginAPI.middleware),
 });
 
 // Create persisted store

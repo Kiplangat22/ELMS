@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../../../components/nav/Navbar";
-import { AdminDrawer } from "../aside/AdminDrawer";
+import { UserDrawer } from "../../UserDashboard/aside/userDrawer";
 import { FaBars } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
 
-const AdminDashboard = () => {
+const UserDashboard = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     const handleDrawerToggle = () => {
@@ -14,10 +14,8 @@ const AdminDashboard = () => {
 
     return (
         <div className="min-h-screen flex flex-col">
-            {/* Top Navbar */}
             <Navbar />
 
-            {/* Dashboard Header (Mobile Drawer Button) */}
             <div className="flex px-4 py-4 bg-gray-700 items-center">
                 <button
                     className="mr-4 text-white text-2xl lg:hidden"
@@ -27,13 +25,11 @@ const AdminDashboard = () => {
                 </button>
 
                 <span className="text-white text-lg font-semibold">
-                    Welcome to your Admin Dashboard
+                    Welcome to your user Dashboard
                 </span>
             </div>
 
-            {/* Layout */}
             <div className="flex flex-1">
-                {/* Sidebar / Drawer */}
                 <aside
                     className={`
                         fixed top-0 z-40 w-64 bg-gray-800 text-white 
@@ -42,7 +38,6 @@ const AdminDashboard = () => {
                     `}
                     style={{ minHeight: "100vh" }}
                 >
-                    {/* Close button for mobile */}
                     <button
                         className="absolute top-4 right-4 text-white text-3xl lg:hidden"
                         onClick={handleDrawerToggle}
@@ -50,11 +45,9 @@ const AdminDashboard = () => {
                         <IoMdClose />
                     </button>
 
-                    {/* Drawer Component */}
-                    <AdminDrawer />
+                    <UserDrawer /> {/* <-- FIXED */}
                 </aside>
 
-                {/* Dashboard Main Content */}
                 <main className="flex-1 bg-gray-100 min-h-screen p-4">
                     <Outlet />
                 </main>
@@ -63,4 +56,4 @@ const AdminDashboard = () => {
     );
 };
 
-export default AdminDashboard;
+export default UserDashboard;

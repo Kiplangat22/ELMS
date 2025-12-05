@@ -7,11 +7,14 @@ import departmentRoutes from './routers/department.routes'
 import leaveBalanceRoutes from './routers/leave_balance.routes'
 import LeaveTypeRoutes from './routers/leave_types.routes'
 import LeaveRequestRoutes from './routers/leave_request.routes'
+import { logger } from './middleware/loggers';
 
 dotenv.config()
 
+
 const initializeApp = () => {
     const app = express()
+    app.use(logger);
     app.use(cors({
         origin: "http://localhost:5173",  // frontend URL
         methods: ["GET", "POST", "PUT", "DELETE"],

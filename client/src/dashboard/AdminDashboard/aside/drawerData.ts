@@ -3,32 +3,21 @@ export const adminDrawerData = [
     {
         id: 'Dashboard',
         name: 'Dashboard',
-        link: '/dashboard',
+        link: '/admin/dashboard',
     },
     {
-        id: 'Employees',
-        name: 'Employees',
-        link: '/employees',
+        id: 'Users',
+        name: 'User Management',
+        link: '/admin/dashboard/users',
     },
     {
-        id: 'LeaveTypes',
-        name: 'Leave Types',
-        link: '/leave-types',
+        id: 'Profile',
+        name: 'Profile',
+        link: '/admin/dashboard/profile',
     },
     {
-        id: 'LeaveRequests',
-        name: 'Leave Requests',
-        link: '/leave-requests',
-    },
-    {
-        id: 'Reports',
-        name: 'Reports',
-        link: '/reports',
-    },
-    {
-        id: 'Settings',
-        name: 'Settings',
-        link: '/settings',
+        id: 'Analytics',
+        name: 'Analytics',
+        link: '/admin/dashboard/analytics',
     },
 ];
-

@@ -1,2 +1,2 @@
 
-export const ApiDomain = "http://localhost:3001"
+export const ApiDomain = "http://localhost:3000/api";
