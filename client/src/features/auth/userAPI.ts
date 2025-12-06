@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { RootState } from "../../app/store";
 import { ApiDomain } from "../../utils/ApiDomain";
 
-// Define the User type
+// User Type
 export type TUser = {
     id: number;
     firstName: string;
@@ -16,22 +16,28 @@ export type TUser = {
     image_url?: string;
 };
 
-// Create the API slice
+// API Slice
 export const usersAPI = createApi({
-    reducerPath: 'usersAPI', // key in the store
+    reducerPath: 'usersAPI',
     baseQuery: fetchBaseQuery({
         baseUrl: ApiDomain,
         prepareHeaders: (headers, { getState }) => {
             const state = getState() as RootState;
-            const token = (state as any).user?.token || '';
-            if (token) headers.set('Authorization', `Bearer ${token}`);
+            const token = (state as any).user?.token || null;
+
+            if (token) {
+                headers.set('Authorization', `Bearer ${token}`);
+            }
+
             headers.set('Content-Type', 'application/json');
             return headers;
         }
     }),
-    tagTypes: ['Users'], // for cache invalidation
+    tagTypes: ['Users'],
+
     endpoints: (builder) => ({
-        // Register/Create user
+
+        // REGISTER
         createUsers: builder.mutation<TUser, Partial<TUser>>({
             query: (user) => ({
                 url: '/auth/register',
@@ -41,43 +47,53 @@ export const usersAPI = createApi({
             invalidatesTags: ['Users'],
         }),
 
-        // Verify user
+        // VERIFY
         verifyUser: builder.mutation<{ message: string }, { email: string; code: string }>({
-            query: (data) => ({
+            query: (payload) => ({
                 url: '/auth/verify',
                 method: 'POST',
-                body: data,
+                body: payload,
             }),
         }),
 
-        // Get all users
+        // LOGIN (OPTIONAL BUT STANDARD)
+        loginUser: builder.mutation<{ token: string; user: TUser }, { email: string; password: string }>({
+            query: (payload) => ({
+                url: '/auth/login',
+                method: 'POST',
+                body: payload,
+            }),
+        }),
+
+        // GET ALL USERS
         getUsers: builder.query<TUser[], void>({
             query: () => '/users',
             providesTags: ['Users'],
         }),
 
-        // Get single user by ID
+        // GET USER BY ID
         getUserById: builder.query<TUser, number>({
-            query: (id) => `/user/${id}`,
+            query: (id) => `/users/${id}`,
         }),
 
-        // Update user
+        // UPDATE USER
         updateUser: builder.mutation<TUser, Partial<TUser> & { id: number }>({
             query: (user) => ({
-                url: `/user/${user.id}`,
+                url: `/users/${user.id}`,
                 method: 'PUT',
                 body: user,
             }),
             invalidatesTags: ['Users'],
         }),
+
     }),
 });
 
-// Export hooks to use in components
 export const {
     useCreateUsersMutation,
     useVerifyUserMutation,
+    useLoginUserMutation,
     useGetUsersQuery,
     useGetUserByIdQuery,
-    useUpdateUserMutation
+    useUpdateUserMutation,
 } = usersAPI;

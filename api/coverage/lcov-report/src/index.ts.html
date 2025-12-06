@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.33% </span>
+                <span class="strong">95.23% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/15</span>
+                <span class='fraction'>20/21</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.33% </span>
+                <span class="strong">95.23% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/15</span>
+                <span class='fraction'>20/21</span>
             </div>
         
             
@@ -87,18 +87,46 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -110,39 +138,53 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import express from 'express';
-import dotenv from 'dotenv';
-import leaveTypeRoutes from './routers/leave_types.routes';
-import departmentRoutes from './routers/department.routes';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import express from 'express'
+import cors from 'cors'
+import dotenv from 'dotenv'
+import { getPool } from './db/config'
+&nbsp;
+import departmentRoutes from './routers/department.routes'
+import leaveBalanceRoutes from './routers/leave_balance.routes'
+import LeaveTypeRoutes from './routers/leave_types.routes'
+import LeaveRequestRoutes from './routers/leave_request.routes'
+import { logger } from './middleware/loggers';
+&nbsp;
+dotenv.config()
+&nbsp;
 &nbsp;
 const initializeApp = () =&gt; {
-    const app = express();
-    
-    app.use(express.json());
-    
-    dotenv.config();
-    
-    app.use('/api/departments', departmentRoutes);
-    app.use('/api/leave-types', leaveTypeRoutes);
-    
+    const app = express()
+    app.use(logger);
+    app.use(cors({
+        origin: "http://localhost:5173",  // frontend URL
+        methods: ["GET", "POST", "PUT", "DELETE"],
+    }))
+&nbsp;
+    app.use(express.json())
+&nbsp;
+    // Register routes
+    app.use('/api/leave-types', LeaveTypeRoutes)
+    app.use('/api/leave-balances', leaveBalanceRoutes)
+    app.use('/api/leave-requests', LeaveRequestRoutes)
+&nbsp;
     app.get('/', <span class="fstat-no" title="function not covered" >(_</span>, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >        res.send("Welcome to the Employee Leave Management System API");</span>
-    });
-    
-    return app;
+<span class="cstat-no" title="statement not covered" >        res.send("Welcome to the Employee Leave Management System API")</span>
+    })
+&nbsp;
+    return app
 }
 &nbsp;
-const app = initializeApp();
-&nbsp;
-export default app;</pre></td></tr></table></pre>
+const app = initializeApp()
+export default app
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-17T18:48:13.984Z
+                at 2025-12-06T20:51:27.012Z
             </div>
         <script src="../prettify.js"></script>
         <script>

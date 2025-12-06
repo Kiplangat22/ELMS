@@ -1,24 +1,22 @@
-// drawerData.ts
 export const userDrawerData = [
     {
-        id: "Dashboard",
-        name: "Dashboard",
-        link: "/user/dashboard",
+        id: 'Dashboard',
+        name: 'Dashboard',
+        link: '/user/dashboard',
     },
     {
-        id: "Requests",
-        name: "My Leave Requests",
-        link: "/user/dashboard/leave-requests",
+        id: 'LeaveRequests',
+        name: 'My Leave Requests',
+        link: '/user/dashboard/leave-requests',
     },
     {
-        id: "Apply Leave",
-        name: "Apply Leave",
-        link: "/user/dashboard/apply-leave",
+        id: 'ApplyLeave',
+        name: 'Apply Leave',
+        link: '/user/dashboard/apply-leave',
     },
-
     {
-        id: "Profile",
-        name: "Profile",
-        link: "/user/dashboard/profile",
-    },
+        id: 'Profile',
+        name: 'Profile',
+        link: '/user/dashboard/profile',
+    }
 ];

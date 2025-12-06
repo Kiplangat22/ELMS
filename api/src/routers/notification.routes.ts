@@ -1,14 +1,12 @@
 import {Express} from "express";
-import * as leaveBalanceController from '../controllers/leave_balance.controllers'
+import * as notificationController from "../controllers/notifications.controller";
 
 const notificationRouter = (app:Express) => {
     
-    app.get('/notifications/:id', notificationController.getCarById);
-    app.post('/notifications', notificationController.createCar);
-    app.put('/notifications/:id', notificationController.updateCar);
-    app.delete('/notifications/:id', notificationController.deleteCar);
-
-    app.get('/allcars', notificationController.getAllCarsController);
+    app.get('/notifications/:id', notificationController.getNotificationById);
+    app.post('/notifications', notificationController.createNotification);
+    app.put('/notifications/:id', notificationController.updateNotification);
+    app.delete('/notifications/:id', notificationController.deleteNotification);
 }
 
-export default notificationController;
+export default notificationRouter;

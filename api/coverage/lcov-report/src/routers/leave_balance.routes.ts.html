@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -74,36 +74,42 @@
 <a name='L9'></a><a href='#L9'>9</a>
 <a name='L10'></a><a href='#L10'>10</a>
 <a name='L11'></a><a href='#L11'>11</a>
-<a name='L12'></a><a href='#L12'>12</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Express}  from "express";
-<span class="cstat-no" title="statement not covered" >import * as leaveBalanceController from "../controllers/leave_balance.controllers";</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import {Router}  from "express";
+import * as leaveBalanceController from "../controllers/leave_balance.controllers";
 &nbsp;
-const leaveBalanceRouter = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(a</span>pp: Express) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  app.get("/leave-balances", leaveBalanceController.getAllLeaveBalances);</span>
-<span class="cstat-no" title="statement not covered" >  app.get("/leave-balances/:id", leaveBalanceController.getLeaveBalanceById);</span>
-<span class="cstat-no" title="statement not covered" >  app.post("/leave-balances", leaveBalanceController.createLeaveBalance);</span>
-<span class="cstat-no" title="statement not covered" >  app.put("/leave-balances/:id", leaveBalanceController.updatedLeaveBalance);</span>
-<span class="cstat-no" title="statement not covered" >  app.delete("/leave-balances/:id", leaveBalanceController.deleteLeaveBalance);</span>
-};
+const router = Router();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default leaveBalanceRouter;</span></pre></td></tr></table></pre>
+&nbsp;
+  router.get("/ListAllLeaveBal", leaveBalanceController.getAllLeaveBalances);
+  router.get("/GetLeavebalByid/:employee_id", leaveBalanceController.getLeaveBalanceById);
+  router.post("/CreateLeavBal", leaveBalanceController.createLeaveBalance);
+  router.put("/UpdateleaveBal", leaveBalanceController.updateLeaveBalance);
+  router.delete("/DeleteleaveBal/:balance_id", leaveBalanceController.deleteLeaveBalance);
+&nbsp;
+&nbsp;
+export default router;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-17T18:48:13.984Z
+                at 2025-12-06T20:51:27.012Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
