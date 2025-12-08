@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">44% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/25</span>
+                <span class='fraction'>11/25</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">30% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>6/20</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -115,95 +115,95 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { getPool } from '../db/config';
 import { LeaveType, NewLeaveType, UpdateLeaveType } from '../types/leave_types.types';
 &nbsp;
-export const getAllLeaveTypes = async (): Promise&lt;LeaveType[]&gt; =&gt; {
-    const pool = await getPool();
-    const result = await pool.request().query('SELECT * FROM Leave_Type');
-    return result.recordset;
+export const getAllLeaveTypes = <span class="fstat-no" title="function not covered" >async </span>(): Promise&lt;LeaveType[]&gt; =&gt; {
+    const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
+    const result = <span class="cstat-no" title="statement not covered" >await pool.request().query('SELECT * FROM Leave_Type');</span>
+<span class="cstat-no" title="statement not covered" >    return result.recordset;</span>
 };
 &nbsp;
-export const getLeaveTypeById = async (leave_type_id: number): Promise&lt;LeaveType&gt; =&gt; {
-    const pool = await getPool();
-    const result = await pool
+export const getLeaveTypeById = <span class="fstat-no" title="function not covered" >async </span>(leave_type_id: number): Promise&lt;LeaveType&gt; =&gt; {
+    const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
+    const result = <span class="cstat-no" title="statement not covered" >await pool</span>
         .request()
         .input('leave_type_id', leave_type_id)
         .query('SELECT * FROM Leave_Type WHERE leave_type_id = @leave_type_id');
-    return result.recordset[0];
+<span class="cstat-no" title="statement not covered" >    return result.recordset[0];</span>
     
 };
 &nbsp;
-export const createLeaveType = async (leaveType: NewLeaveType) =&gt; {
-    const pool = await getPool();
-    await pool
+export const createLeaveType = <span class="fstat-no" title="function not covered" >async </span>(leaveType: NewLeaveType) =&gt; {
+    const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
+<span class="cstat-no" title="statement not covered" >    await pool</span>
         .request()
         .input('type_name', leaveType.type_name)
         .input('description', leaveType.description)
         .input('default_days', leaveType.default_days)
         .query('INSERT INTO Leave_Type (type_name, description, default_days) VALUES (@type_name, @description, @default_days)');
-    return { message: 'Leave type created successfully' };
+<span class="cstat-no" title="statement not covered" >    return { message: 'Leave type created successfully' };</span>
 };
 &nbsp;
-export const updateLeaveType = async (leave_type_id: number, leaveType: UpdateLeaveType) =&gt; {
-    const pool = await getPool();
-    await pool
+export const updateLeaveType = <span class="fstat-no" title="function not covered" >async </span>(leave_type_id: number, leaveType: UpdateLeaveType) =&gt; {
+    const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
+<span class="cstat-no" title="statement not covered" >    await pool</span>
         .request()
         .input('leave_type_id', leave_type_id)
         .input('type_name', leaveType.type_name)
         .input('description', leaveType.description)
         .input('default_days', leaveType.default_days)
         .query('UPDATE Leave_Type SET type_name = @type_name, description = @description, default_days = @default_days WHERE leave_type_id = @leave_type_id');
-    return { message: 'Leave type updated successfully' };
+<span class="cstat-no" title="statement not covered" >    return { message: 'Leave type updated successfully' };</span>
 };
 &nbsp;
-export const deleteLeaveType = async (leave_type_id: number) =&gt; {
-    const pool = await getPool();
-    await pool
+export const deleteLeaveType = <span class="fstat-no" title="function not covered" >async </span>(leave_type_id: number) =&gt; {
+    const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
+<span class="cstat-no" title="statement not covered" >    await pool</span>
         .request()
         .input('leave_type_id', leave_type_id)   // &lt;-- FIXED
         .query('DELETE FROM Leave_Type WHERE leave_type_id = @leave_type_id');
@@ -214,7 +214,7 @@ export const deleteLeaveType = async (leave_type_id: number) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-08T14:03:50.694Z
+                at 2025-12-08T21:22:39.912Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

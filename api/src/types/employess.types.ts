@@ -3,6 +3,7 @@ export interface Employee {
     first_name: string;
     last_name: string;
     email: string;
+    phone_number?: string;
     hashed_pass: string;
     role: string;
     date_joined: Date;
@@ -25,6 +26,7 @@ export interface UpdateEmployee {
     first_name?: string;
     last_name?: string;
     email?: string;
+    phone_number?: string;
     hashed_pass?: string;
     role?: string;
     is_active?: boolean;

@@ -56,24 +56,26 @@ export const getEmployee = async ():Promise <Employee[]> => {
 
 }
 
-//UPDATING AN EMPLOYEE  
+//UPDATING AN EMPLOYEE
 export  const UpdateEmploye = async (employee_id:number, employee:UpdateEmployee )=> {
-const pool = await getPool();
-await pool
-.request()
-    .input('employee_id',employee_id)
-    .input('first_name', employee.first_name)
-    .input('last_name', employee.last_name)
-    .input('email', employee.email)
-    .input('hashed_pass', employee.hashed_pass)
-    .input('role', employee.role)
-    .input('is_active', employee.is_active)
-    .input('department_id', employee.department_id)
-    .query('UPDATE Employees SET first_name = @first_name, last_name = @last_name, email = @email, hashed_pass = @hashed_pass, role = @role,is_active=@is_active,department_id=@department_id  WHERE employee_id = @employee_id');
+ const pool = await getPool();
+ await pool
+ .request()
+     .input('employee_id',employee_id)
+     .input('first_name', employee.first_name)
+     .input('last_name', employee.last_name)
+     .input('email', employee.email)
+     .input('phone_number', employee.phone_number)
+     .input('hashed_pass', employee.hashed_pass)
+     .input('role', employee.role)
+     .input('is_active', employee.is_active)
+     .input('department_id', employee.department_id)
+     .query('UPDATE Employees SET first_name = @first_name, last_name = @last_name, email = @email, phone_number = @phone_number, hashed_pass = @hashed_pass, role = @role,is_active=@is_active,department_id=@department_id  WHERE employee_id = @employee_id');
 
-    return { message: 'Employee updated successfully' };
-   
-}
+     return { message: 'Employee updated successfully' };
+
+
+ }
 //AUTHENTICATION ....
 //find employess by email
 export const  getEmployeeByEmail = async (email:string):Promise<Employee| null>=>{

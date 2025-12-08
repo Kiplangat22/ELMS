@@ -12,6 +12,7 @@ CREATE TABLE Employees (
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
+    phone_number VARCHAR(20),
     hashed_pass VARCHAR(250) NOT NULL,
     role VARCHAR(50) NOT NULL DEFAULT 'user',
     date_joined DATE,
