@@ -15,7 +15,7 @@ export const createEmployee = async(employee: NewEmployee) => {
 
     if(employee.hashed_pass){
 
-       employee.hashed_pass =await  bcrypt.hash(employee.hashed_pass, 10)
+       employee.hashed_pass = await bcrypt.hash(employee.hashed_pass, 10)
        
      }
      //generate the verification code 

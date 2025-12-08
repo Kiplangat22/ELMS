@@ -9,6 +9,7 @@ import leaveBalanceRoutes from './routers/leave_balance.routes'
 import LeaveTypeRoutes from './routers/leave_types.routes'
 import LeaveRequestRoutes from './routers/leave_request.routes'
 import notificationRouter from './routers/notification.routes'
+import authRoutes from './routers/auth.routes'
 
 dotenv.config()
 
@@ -25,10 +26,14 @@ const initializeApp = () => {
 
 
     // Routes using Router()
+
+    app.use('/api/auth', authRoutes)
     app.use('/api/departments', departmentRoutes)
     app.use('/api/leave-types', LeaveTypeRoutes)
     app.use('/api/leave-balances', leaveBalanceRoutes)
     app.use('/api/leave-requests', LeaveRequestRoutes)
+    app.use('/api/employees', employeesRoutes)
+    app.use('/api/notifications', notificationRouter)
 
    
     employeesRoutes(app)

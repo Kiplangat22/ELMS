@@ -1,5 +1,5 @@
 -- Select the database
-USE ELMS_DB;
+USE [ELMS.dbs];
 GO
 -- DEPARTMENTS TABLE
 CREATE TABLE Departments (
@@ -135,7 +135,7 @@ SELECT * FROM Leave_Type;
 -- SELECT * FROM Leave_Balance;
 -- SELECT * FROM Notification;
 -- GO
--- Dropping tables if they exist
+-- -- Dropping tables if they exist
 -- DROP TABLE IF EXISTS Notification;
 -- DROP TABLE IF EXISTS Leave_Balance;
 --  DROP TABLE IF EXISTS Leave_Request;
@@ -150,3 +150,4 @@ FROM Leave_Balance lb
 INNER JOIN Employees e ON lb.employee_id = e.employee_id
 LEFT JOIN Departments d ON e.department_id = d.department_id
 ORDER BY e.last_name, e.first_name;
+
