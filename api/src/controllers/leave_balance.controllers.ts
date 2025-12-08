@@ -1,82 +1,78 @@
-import {Request, Response} from 'express';
-import * as leaveBalnceServices from '../services/leave_balance.services';
-import { error } from 'console';
-//list all leave balances 
+import { Request, Response } from 'express';
+import * as leaveBalanceServices from '../services/leave_balance.services';
+
+// GET all leave balances
 export const getAllLeaveBalances = async (req: Request, res: Response) => {
-    try{
-        const leaveBalance = await leaveBalnceServices.getAllBalances();
-        console.log(leaveBalance);
-    
-        res.status(200).json(leaveBalance);
-    } catch (error: any){
-        res.status(500).json({error:error.message});
-    }
-};
-
-//get leave balance for one employee
-export const getLeaveBalanceById = async(req: Request, res: Response) => {
-    try{
-        const { employee_id } = req.params;
-        const leaveBalance =await leaveBalnceServices.getEmployeeLeaveBalances(Number(employee_id));
-        if (leaveBalance){
-            res.status(200).json(leaveBalance);
-        }else{
-            res.status(400).json({message:'Leave Balance not Found'});
-        
-        }
-    }catch(error:any){
-        res.status(500).json({error:error.message});
-        console.log("Error fetching the leave balance ",error);
-    }
-};
-//creting initial bal
-export const createLeaveBalance = async(req: Request, res: Response) =>{
-
-    try{
-        const { employee_id,balance_days} = req.body;
-        const createdLeaveBalance = await leaveBalnceServices.createInitialBalance(Number(employee_id),balance_days);
-        res.status(201).json(createdLeaveBalance);
-    } catch (error:any){
-        res.status(500).json({error: error.message});
-        console.log(error)
-    }
-};
-// Add back leave days on rejection
-export const addLeaveDays = async (req: Request, res: Response) => {
   try {
-    const { employee_id, balance_days } = req.body;
-    const updated = await leaveBalnceServices.addLeaveDays(Number(employee_id), balance_days);
-    res.status(200).json(updated);
+    const balances = await leaveBalanceServices.getAllBalances();
+    res.status(200).json(balances);
   } catch (error: any) {
-    res.status(500).json({ message: error.message });
+    console.error("Error fetching leave balances:", error);
+    res.status(500).json({ error: error.message });
   }
 };
-//update leave bal 
+
+// GET leave balance by employee ID
+export const getLeaveBalanceById = async (req: Request, res: Response) => {
+  try {
+    const employee_id = Number(req.params.employee_id);
+    const balance = await leaveBalanceServices.getEmployeeLeaveBalances(employee_id);
+    if (!balance) {
+      return res.status(404).json({ message: 'Leave balance not found' });
+    }
+    res.status(200).json(balance);
+  } catch (error: any) {
+    console.error("Error fetching leave balance:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// CREATE initial leave balance
+export const createLeaveBalance = async (req: Request, res: Response) => {
+  try {
+    const { employee_id, balance_days } = req.body;
+    const created = await leaveBalanceServices.createInitialBalance(Number(employee_id), balance_days);
+    res.status(201).json(created);
+  } catch (error: any) {
+    console.error("Error creating leave balance:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// UPDATE leave balance by balance_id
 export const updateLeaveBalance = async (req: Request, res: Response) => {
   try {
-    const { employee_id, balance_days } = req.body;
-    const updated = await leaveBalnceServices.updateLeaveBalance(Number(employee_id), balance_days);
-    res.status(200).json(updated);
-    console.log(updated);
-  } catch (error: any) {
-    res.status(500).json({ message: error.message });
-  }
-};
-//delete leave bal
-export const deleteLeaveBalance = async(req: Request, res: Response) => {
-    const leaveBalanceId = parseInt(req.params.balance_id);
-    if(isNaN(leaveBalanceId)){
-        return res.status(400).json({message: 'Invalid Leave Balance'});
+    const balance_id = Number(req.params.balance_id); 
+    const { balance_days } = req.body;
+
+    if (isNaN(balance_id)) {
+      return res.status(400).json({ message: 'Invalid balance ID' });
     }
 
-    try{
-        const result = await leaveBalnceServices.deleteLeaveBalance(leaveBalanceId);
-        res.status(200).json(result);
-    } catch(error:any){
-        if (error.message === 'Leave Balance not Found'){
-            res.status(404).json({message:'Leave Balance not found'});
-        }else{ 
-            res.status(500).json({error:error.message});
-        }
+    const updated = await leaveBalanceServices.updateLeaveBalance(balance_id, balance_days);
+    if (!updated) {
+      return res.status(404).json({ message: 'Leave balance not found' });
     }
+
+    res.status(200).json(updated);
+  } catch (error: any) {
+    console.error("Error updating leave balance:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// DELETE leave balance by balance_id
+export const deleteLeaveBalance = async (req: Request, res: Response) => {
+  try {
+    const balance_id = Number(req.params.balance_id);
+    if (isNaN(balance_id)) return res.status(400).json({ message: 'Invalid balance ID' });
+
+    const deleted = await leaveBalanceServices.deleteLeaveBalance(balance_id);
+    if (!deleted) return res.status(404).json({ message: 'Leave balance not found' });
+
+    res.status(200).json({ message: 'Leave balance deleted successfully', deleted });
+  } catch (error: any) {
+    console.error("Error deleting leave balance:", error);
+    res.status(500).json({ error: error.message });
+  }
 };

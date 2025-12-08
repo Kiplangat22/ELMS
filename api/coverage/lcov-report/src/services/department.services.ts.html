@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">52.63% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/19</span>
+                <span class='fraction'>10/19</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>6/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -102,27 +102,18 @@
 <a name='L37'></a><a href='#L37'>37</a>
 <a name='L38'></a><a href='#L38'>38</a>
 <a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,28 +122,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { getPool } from "../db/config";</span>
-<span class="cstat-no" title="statement not covered" >import sql from "mssql";</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { getPool } from "../db/config";
+import sql from "mssql";
 &nbsp;
 // READ - Get all departments
-export const <span class="cstat-no" title="statement not covered" >getDepartmentsService = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>() =&gt; {</span>
+export const getDepartmentsService = <span class="fstat-no" title="function not covered" >async </span>() =&gt; {
   const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
   const result = <span class="cstat-no" title="statement not covered" >await pool.request().query("SELECT * FROM Departments");</span>
 <span class="cstat-no" title="statement not covered" >  return result.recordset;</span>
 };
 &nbsp;
 // CREATE - Add a new department
-export const <span class="cstat-no" title="statement not covered" >createDepartmentService = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(department_name: string) =&gt; {</span>
+export const createDepartmentService = <span class="fstat-no" title="function not covered" >async </span>(department_name: string) =&gt; {
   const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
 <span class="cstat-no" title="statement not covered" >  await pool</span>
     .request()
@@ -161,7 +161,7 @@ export const <span class="cstat-no" title="statement not covered" >createDepartm
 };
 &nbsp;
 // UPDATE - Modify an existing department
-export const <span class="cstat-no" title="statement not covered" >updateDepartmentService = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(id: number, department_name: string) =&gt; {</span>
+export const updateDepartmentService = <span class="fstat-no" title="function not covered" >async </span>(id: number, department_name: string) =&gt; {
   const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
 <span class="cstat-no" title="statement not covered" >  await pool</span>
     .request()
@@ -173,7 +173,7 @@ export const <span class="cstat-no" title="statement not covered" >updateDepartm
 };
 &nbsp;
 // DELETE - Remove a department
-export const <span class="cstat-no" title="statement not covered" >deleteDepartmentService = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(id: number) =&gt; {</span>
+export const deleteDepartmentService = <span class="fstat-no" title="function not covered" >async </span>(id: number) =&gt; {
   const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
 <span class="cstat-no" title="statement not covered" >  await pool</span>
     .request()
@@ -187,7 +187,7 @@ export const <span class="cstat-no" title="statement not covered" >deleteDepartm
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-06T20:51:27.012Z
+                at 2025-12-07T20:53:11.531Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

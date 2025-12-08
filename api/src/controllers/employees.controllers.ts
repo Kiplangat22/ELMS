@@ -146,4 +146,3 @@ export const verifyEmployee = async (req: Request, res: Response) => {
         res.status(400).json({ message: error.message });
     }
 };
-

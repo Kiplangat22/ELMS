@@ -1,11 +1,18 @@
-import { Express } from "express";
-import * as deparmentControllers from "../controllers/department.controllers";
+import { Router } from "express";
+import {
+  getDepartments,
+  createDepartment,
+  getDepartmentById,
+  updateDepartment,
+  deleteDepartment,
+} from "../controllers/department.controllers";
 
-const departmentRoutes = (app:Express) => {
+const router = Router();
 
+router.get("/", getDepartments);
+router.post("/", createDepartment);
+router.get("/:id", getDepartmentById);
+router.put("/:id", updateDepartment);
+router.delete("/:id", deleteDepartment);
 
-
-
-}
-
-export default departmentRoutes;
+export default router;

@@ -172,10 +172,3 @@ export  const  verifyEmployee = async (email:string,code:string) => {
     return { message: 'Employee verified successfully 😉😉 progress' };
 
 }
-
-  
-
-
-
-
-

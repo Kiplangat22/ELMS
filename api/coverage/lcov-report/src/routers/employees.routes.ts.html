@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -81,47 +81,47 @@
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Express } from "express";  
-<span class="cstat-no" title="statement not covered" >import * as employeesControllers from "../controllers/employees.controllers";</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { Express } from "express";  
+import * as employeesControllers from "../controllers/employees.controllers";
 &nbsp;
- const employeesRoutes =<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(a</span>pp: Express) =&gt; {</span>
+ const employeesRoutes =(app: Express) =&gt; {
   
-<span class="cstat-no" title="statement not covered" >    app.post("/addEmployees", employeesControllers.createEmployee);</span>
-<span class="cstat-no" title="statement not covered" >    app.delete("/deleteEmployees/:employee_id", employeesControllers.deleteEmployee);</span>
-<span class="cstat-no" title="statement not covered" >    app.get("/getEmployeeById/:employee_id", employeesControllers.getEmployeeById);</span>
-<span class="cstat-no" title="statement not covered" >    app.get("/getAllEmployees", employeesControllers.getAllEmployees)</span>
-<span class="cstat-no" title="statement not covered" >    app.post("/loginEmployee", employeesControllers.loginEmployee)</span>
-<span class="cstat-no" title="statement not covered" >    app.put("/updateEmployee/:employee_id", employeesControllers.UpdateEmployee)</span>
-<span class="cstat-no" title="statement not covered" >    app.post("/verifyEmployee", employeesControllers.verifyEmployee)</span>
+    app.post("/addEmployees", employeesControllers.createEmployee);
+    app.delete("/deleteEmployees/:employee_id", employeesControllers.deleteEmployee);
+    app.get("/getEmployeeById/:employee_id", employeesControllers.getEmployeeById);
+    app.get("/getAllEmployees", employeesControllers.getAllEmployees)
+    app.post("/loginEmployee", employeesControllers.loginEmployee)
+    app.put("/updateEmployee/:employee_id", employeesControllers.UpdateEmployee)
+    app.post("/verifyEmployee", employeesControllers.verifyEmployee)
 &nbsp;
 &nbsp;
 &nbsp;
  };
 &nbsp;
-<span class="cstat-no" title="statement not covered" > export default employeesRoutes;</span></pre></td></tr></table></pre>
+ export default employeesRoutes;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-06T20:51:27.012Z
+                at 2025-12-07T20:53:11.531Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

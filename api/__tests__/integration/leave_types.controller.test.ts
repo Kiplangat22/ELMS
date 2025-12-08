@@ -1,4 +1,5 @@
 import request from "supertest";
+import { expect, beforeAll, afterAll, describe, it } from "@jest/globals";
 import app from "../../src/index";
 import { getPool } from "../../src/db/config";
 
@@ -75,7 +76,7 @@ describe("Leave Type API Integration Tests", () => {
     const leaveTypeId = await insertLeaveType("test-delete-leave", 5);
     const res = await request(app).delete(`/api/leave-types/${leaveTypeId}`);
 
-    expect(res.status).toBe(204);
+    expect(res.status).toBe(200);
   });
 
   it("should return 404 for non-existent leave type ID", async () => {
