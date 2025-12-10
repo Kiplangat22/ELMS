@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 // REGISTER
 export const register = async (req: Request, res: Response) => {
     try {
-        const { firstName, lastName, email, password, department, role } = req.body;
+        const { first_name, last_name, email, password, department, role } = req.body;
 
         // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -14,8 +14,8 @@ export const register = async (req: Request, res: Response) => {
         // const verificationCode = Math.random().toString(36).substring(2, 8).toUpperCase();
 
         const employeeData = {
-            first_name: firstName,
-            last_name: lastName,
+            first_name,
+            last_name,
             email,
             hashed_pass: hashedPassword,
             role: role || 'user',

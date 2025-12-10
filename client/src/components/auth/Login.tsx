@@ -37,15 +37,16 @@ export const Login = () => {
     const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
         try {
             const response = await loginUser(data).unwrap();
+            console.log(response)
             dispatch(loginSuccess(response));
             toast.success("Login successful!");
 
-            // Navigate based on role
-            if (response.user.role === 'admin') {
-                navigate('/admin/dashboard/todos');
-            } else if (response.user.role === 'user') {
-                navigate('/user/dashboard/todos');
-            }
+            // // Navigate based on role
+            // if (response.user.role === 'admin') {
+            //     navigate('/admin/dashboard/todos');
+            // } else if (response.user.role === 'user') {
+            //     navigate('/user/dashboard/todos');
+            // }
         } catch (error) {
             console.log("Login error:", error);
             toast.error("Login failed. Please check your credentials.");

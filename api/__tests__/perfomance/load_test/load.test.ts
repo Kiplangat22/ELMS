@@ -1,5 +1,5 @@
-// ===== Load Testing =====
-// File: load.test.ts
+
+// loa test
 import http from "k6/http";
 import { check, sleep } from "k6";
 

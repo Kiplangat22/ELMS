@@ -1,10 +1,5 @@
 export const userDrawerData = [
     {
-        id: 'Dashboard',
-        name: 'Dashboard',
-        link: '/user/dashboard',
-    },
-    {
         id: 'LeaveRequests',
         name: 'My Leave Requests',
         link: '/user/dashboard/leave-requests',

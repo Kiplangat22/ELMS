@@ -1,23 +1,28 @@
 // drawerData.ts
 export const adminDrawerData = [
     {
-        id: 'Dashboard',
-        name: 'Dashboard',
-        link: '/admin/dashboard',
+        id: 'LeaveRequests',
+        name: 'Leave Requests',
+        link: '/admin/dashboard/leave-requests',
     },
     {
-        id: 'Users',
-        name: 'User Management',
-        link: '/admin/dashboard/users',
+        id: 'ApproveLeave',
+        name: 'Approve Leave',
+        link: '/admin/dashboard/approve-leave',
     },
     {
-        id: 'Profile',
-        name: 'Profile',
-        link: '/admin/dashboard/profile',
+        id: 'Employees',
+        name: 'Employees',
+        link: '/admin/dashboard/employees',
     },
     {
         id: 'Analytics',
         name: 'Analytics',
         link: '/admin/dashboard/analytics',
+    },
+    {
+        id: 'Profile',
+        name: 'Profile',
+        link: '/admin/dashboard/profile',
     },
 ];

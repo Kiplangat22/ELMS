@@ -40,7 +40,7 @@ export const Register = () => {
       await createUser(data).unwrap();
       toast.success("Registration successful! Please check your email to verify your account.");
       setTimeout(() => {
-        navigate("/register/verify", { state: { email: data.email } });
+        navigate("/register/y", { state: { email: data.email } });
       }, 1500);
     } catch (error) {
       console.error(error);

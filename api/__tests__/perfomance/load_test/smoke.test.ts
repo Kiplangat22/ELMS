@@ -1,5 +1,5 @@
-// ===== Simple Smoke Test =====
-// File: smoke.test.ts
+
+// smoketest
 import http from "k6/http";
 import { check, sleep } from "k6";
 

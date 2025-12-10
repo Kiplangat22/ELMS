@@ -34,12 +34,12 @@ export const addLeaveDays = async (employee_id: number, days: number): Promise<L
   }
 };
 
-export const updateLeaveBalance = async (employee_id: number, balance_days: number): Promise<Leave_Balance> => {
-  try {
-    return await LeaveBalanceRepository.updateBalance(employee_id, balance_days);
-  } catch (error) {
-    throw new Error(`Failed to update leave balance: ${error}`);
-  }
+export const updateLeaveBalance = async (balance_id: number, balance_days: number): Promise<Leave_Balance> => {
+   try {
+     return await LeaveBalanceRepository.updateBalance(balance_id, balance_days);
+   } catch (error) {
+     throw new Error(`Failed to update leave balance: ${error}`);
+   }
 };
 
 export const getAllBalances = async (): Promise<Leave_Balance[]> => {

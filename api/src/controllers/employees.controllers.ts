@@ -87,27 +87,27 @@ export const getAllEmployees = async (req: Request, res: Response) => {
 export const UpdateEmployee = async(req:Request, res :Response)=>{
 
     const id = parseInt(req.params.employee_id);
-    //bad req if employee_id  not found 
+    //bad req if employee_id  not found
 
     if (isNaN(id)){
         return res.status(400).json({message:'invalid employee_id '})
 
     }
-    //proced to update 
+    //proced to update
 
     try {
         const employee = req.body;
         const result = await employeeService.updateEmployee(id,employee);
         res.status(200).json(result)
-       
-        
+
+
     } catch (error: any) {
-       if(error.message ==='Employee not found '){
-        return res .status(404).json({message:'Employee not found '})
+       if(error.message ==='Employee not found'){
+        return res .status(404).json({message:'Employee not found'})
 
        }else {
         return res.status(500).json({error:error.message})
-  
+
 
        }
     }
@@ -116,9 +116,9 @@ export const UpdateEmployee = async(req:Request, res :Response)=>{
 //LOGIN CONTROLLER 
 export const loginEmployee = async (req: Request, res: Response) => {
     try {
-        const { email, hashed_pass } = req.body;
+        const { email, password } = req.body; 
 
-        const result = await employeeService.loginEmployee(email, hashed_pass);
+        const result = await employeeService.loginEmployee(email, password);
         res.status(200).json(result);
     } catch (error: any) {
         if (error.message === 'Employee not found') {
@@ -130,6 +130,7 @@ export const loginEmployee = async (req: Request, res: Response) => {
         }
     }
 }
+
 
 // VERIFICATION CONTROLLER 
 export const verifyEmployee = async (req: Request, res: Response) => {

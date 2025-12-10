@@ -13,11 +13,7 @@ dotenv.config();
 
 export const createEmployee = async(employee: NewEmployee) => {
 
-    if(employee.hashed_pass){
-
-       employee.hashed_pass = await bcrypt.hash(employee.hashed_pass, 10)
-       
-     }
+    // Password is already hashed in controller
      //generate the verification code 
 
      const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
@@ -90,9 +86,9 @@ const ensureEmployeeExists = async (employee_id: number) => {
 //AUTHENTICATION
   //login in user 
 
-  export const loginEmployee = async ( email:string, hashed_pass:string ) => {
+  export const loginEmployee = async ( email:string, password:string ) => {
 
-    //find emply by email
+    //find employee by email
     const employee = await employessRepositories.getEmployeeByEmail(email);
     if (!employee) {
         throw new Error('Employee not found')
@@ -100,7 +96,7 @@ const ensureEmployeeExists = async (employee_id: number) => {
     }
     //compare the login pass with hashed stored pass
 
-    const isMatch = await bcrypt.compare(hashed_pass,employee.hashed_pass);
+    const isMatch = await bcrypt.compare(password, employee.hashed_pass);
 
     if(!isMatch){
 
@@ -127,7 +123,7 @@ const ensureEmployeeExists = async (employee_id: number) => {
     return{
         message:'Login successfully',
         token,
-        employee:{
+        user:{
             id:employee.employee_id,
             first_name:employee.first_name,
             last_name:employee.last_name,

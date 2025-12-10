@@ -96,4 +96,5 @@ export const {
     useGetUsersQuery,
     useGetUserByIdQuery,
     useUpdateUserMutation,
+    // useDeleteUserMutation,
 } = usersAPI;

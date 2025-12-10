@@ -1,5 +1,5 @@
-// ===== Spike Test =====
-// File: spike.test.ts
+
+// spike test
 import http from "k6/http";
 import { check, sleep } from "k6";
 

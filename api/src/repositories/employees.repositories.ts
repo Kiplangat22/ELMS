@@ -24,12 +24,16 @@ export const createEmployee = async (employee: NewEmployee) => {
 //DELTE EMPLOYEE
 export const deleteEmployee = async (employee_id:number) => {
     const pool = await getPool();
-    await pool
+    const result = await pool
     .request()
     .input('employee_id',employee_id)
     .query('DELETE FROM Employees WHERE employee_id = @employee_id')
 
-      return{message:"Employee deleted suceffuly "};
+    if (result.rowsAffected[0] === 0) {
+        throw new Error('Employee not found');
+    }
+
+      return{message:"Employee deleted successfully "};
 
 
 

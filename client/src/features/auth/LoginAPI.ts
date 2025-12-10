@@ -22,7 +22,7 @@ type LoginInputs = {
 
 // Create the API slice
 export const loginAPI = createApi({
-    reducerPath: 'loginAPI', // unique key for the store
+    reducerPath: 'loginAPI', 
     baseQuery: fetchBaseQuery({ baseUrl: ApiDomain }),
     tagTypes: ['Login'],
     endpoints: (builder) => ({
@@ -32,7 +32,7 @@ export const loginAPI = createApi({
                 method: 'POST',
                 body: loginData
             }),
-            invalidatesTags: ['Login'] // invalidate cached data if needed
+            invalidatesTags: ['Login'] 
         })
     })
 });

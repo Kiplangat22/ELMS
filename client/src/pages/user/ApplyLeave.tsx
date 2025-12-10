@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useApplyLeaveMutation } from "../../features/leave/leaveAPI";
+import { useApplyLeaveMutation } from "../../features/leave/LeaveRequestAPI";
+import { useGetLeaveTypesQuery } from "../../features/leave/leaveTypeAPI";
 
 const ApplyLeave = () => {
     const [form, setForm] = useState({
@@ -9,7 +10,8 @@ const ApplyLeave = () => {
         reason: ""
     });
 
-    const [applyLeave, { isLoading }] = useApplyLeaveMutation();
+    const [applyLeave, { isLoading, error }] = useApplyLeaveMutation();
+    const { data: leaveTypes, isLoading: loadingTypes } = useGetLeaveTypesQuery();
 
     const handleChange = (e: any) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -17,8 +19,36 @@ const ApplyLeave = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        await applyLeave(form);
-        alert("Leave applied successfully");
+
+        // Find the selected leave type ID
+        const selectedType = leaveTypes?.data.find(type => type.leave_name === form.leaveType);
+        if (!selectedType) {
+            alert("Please select a valid leave type");
+            return;
+        }
+
+        // Transform form data to match NewLeaveRequest type
+        const leaveRequest = {
+            leave_type_id: selectedType.leavetypeid,
+            start_date: form.startDate,
+            end_date: form.endDate,
+            justification: form.reason
+        };
+
+        try {
+            await applyLeave(leaveRequest).unwrap();
+            alert("Leave applied successfully");
+            // Reset form after successful submission
+            setForm({
+                leaveType: "",
+                startDate: "",
+                endDate: "",
+                reason: ""
+            });
+        } catch (err) {
+            console.error("Failed to apply leave:", err);
+            alert("Failed to apply leave. Please try again.");
+        }
     };
 
     return (
@@ -41,22 +71,28 @@ const ApplyLeave = () => {
                 <input
                     name="startDate"
                     type="date"
+                    value={form.startDate}
                     onChange={handleChange}
                     className="p-2 w-full rounded bg-gray-700"
+                    required
                 />
 
                 <input
                     name="endDate"
                     type="date"
+                    value={form.endDate}
                     onChange={handleChange}
                     className="p-2 w-full rounded bg-gray-700"
+                    required
                 />
 
                 <textarea
                     name="reason"
                     placeholder="Reason"
+                    value={form.reason}
                     onChange={handleChange}
                     className="p-2 w-full rounded bg-gray-700"
+                    required
                 />
 
                 <button

@@ -1,53 +1,38 @@
 // src/index.ts
 import express from 'express';
 import cors from 'cors';
-// import { logger } from './middleware/logger';
-// import { rateLimiterMiddleware } from './middleware/rateLimiter';
-// import { errorHandler } from './middleware/errorHandler';
 
-// // Import routers
-// import authRouter from './routes/auth/auth.router';
-// import leaveRouter from './routes/leave/leave.router';
-// import employeeRouter from './routes/employee/employee.router';
-// import adminRouter from './routes/admin/admin.router';
+// Routers
+import authRouter from '../src/routers/auth.routes';
+import leaveRouter from '../src/routers/leave_request.routes';
+import employeeRouter from '../src/routers/employees.routes';
 
 const initializeApp = () => {
     const app = express();
 
-    // Middleware
-    app.use(express.json()); // Parse JSON bodies
-    app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
-    
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+
     app.use(cors({
         origin: "http://localhost:5173",
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
         credentials: true
     }));
 
-    // app.use(logger);
-    // app.use(rateLimiterMiddleware);
-
-    // Health check route
     app.get('/', (req, res) => {
-        res.json({ 
+        res.json({
             message: 'ELMS API is running',
             version: '1.0.0',
             timestamp: new Date().toISOString()
         });
     });
 
-    // // API Routes
-    // authRouter(app);
-    // leaveRouter(app);
-    // employeeRouter(app);
-    // adminRouter(app);
-
-    // // Error handling middleware (must be last)
-    // app.use(errorHandler);
+    // Attach routes
+    app.use('/api/auth', authRouter);
+    app.use('/api/leave-requests', leaveRouter);
+    app.use('/api/employees', employeeRouter);
 
     return app;
 };
 
-const app = initializeApp();
-
-export default app;
+export default initializeApp();

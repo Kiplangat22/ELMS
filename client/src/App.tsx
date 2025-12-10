@@ -29,7 +29,7 @@ function App() {
   // const isUser = user?.role === 'user';
 
   const isAdmin = true;  // Set true to see admin dashboard
-  const isUser = false; 
+  const isUser = true; 
 
   const router = createBrowserRouter([
     {

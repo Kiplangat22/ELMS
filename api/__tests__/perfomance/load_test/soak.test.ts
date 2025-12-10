@@ -1,5 +1,5 @@
-// ===== Soak Test (Breakpoint Soak) =====
-// File: soak.test.ts
+
+// soak.test
 import http from "k6/http";
 import { check, sleep } from "k6";
 

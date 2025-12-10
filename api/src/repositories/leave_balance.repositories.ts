@@ -65,20 +65,20 @@ export const addBalance = async (employee_id: number, days: number) => {
         return result.recordset[0];
 
         };
-//Update balance directly  on leave acceptance 
-export const updateBalance = async (employee_id: number, balance_days: number) => {
+//Update balance directly by balance_id
+export const updateBalance = async (balance_id: number, balance_days: number) => {
     const pool = await getPool();
     const result = await pool
         .request()
-        .input('employee_id',employee_id)
+        .input('balance_id',balance_id)
         .input('balance_days', balance_days)
         .query(`
-            UPDATE Leave_Balance 
+            UPDATE Leave_Balance
             SET balance_days = @balance_days
             OUTPUT INSERTED.*
-            WHERE employee_id = @employee_id
+            WHERE balance_id = @balance_id
         `);
-    
+
     return result.recordset[0];
 };
 
