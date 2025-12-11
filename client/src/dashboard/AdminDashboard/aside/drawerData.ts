@@ -11,9 +11,9 @@ export const adminDrawerData = [
         link: '/admin/dashboard/approve-leave',
     },
     {
-        id: 'Employees',
-        name: 'Employees',
-        link: '/admin/dashboard/employees',
+        id: 'Users',
+        name: 'Users',
+        link: '/admin/dashboard/users',
     },
     {
         id: 'Analytics',

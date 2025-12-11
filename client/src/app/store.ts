@@ -3,8 +3,8 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { usersAPI } from "../features/auth/userAPI";
 import { loginAPI } from "../features/auth/LoginAPI";
-import { leaveTypeAPI } from "../features/leave/leaveTypeAPI"; // ← ADDED
-import { leaveRequestAPI } from "../features/leave/LeaveRequestAPI"; // ← ADDED
+import { leaveTypeAPI } from "../features/leave/leaveTypeAPI"; 
+import { leaveRequestAPI } from "../features/leave/LeaveRequestAPI"; 
 import userSlice from "../features/auth/userSlice";
 import { departmentAPI } from "../features/departments/departmentAPI";
 import { leaveBalanceAPI } from "../features/leave/leaveBalanceAPI";
@@ -49,4 +49,4 @@ export const store = configureStore({
 
 // Create persisted store
 export const persistedStore = persistStore(store);
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof rootReducer>;

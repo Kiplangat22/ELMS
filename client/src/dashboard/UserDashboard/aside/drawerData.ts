@@ -1,8 +1,13 @@
 export const userDrawerData = [
     {
+        id: 'MyLeaves',
+        name: 'My Leaves',
+        link: '/user/dashboard/myleaves',
+    },
+    {
         id: 'LeaveRequests',
         name: 'My Leave Requests',
-        link: '/user/dashboard/leave-requests',
+        link: '/user/dashboard/leaverequests',
     },
     {
         id: 'ApplyLeave',
@@ -12,6 +17,6 @@ export const userDrawerData = [
     {
         id: 'Profile',
         name: 'Profile',
-        link: '/user/dashboard/profile',
+        link: '/user/dashboard/Profile',
     }
 ];

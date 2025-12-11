@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.66% </span>
+                <span class="strong">72.22% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/36</span>
+                <span class='fraction'>26/36</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.58% </span>
+                <span class="strong">65.51% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/29</span>
+                <span class='fraction'>19/29</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -127,8 +127,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,51 +159,43 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as LeaveBalanceRepository from '../repositories/leave_balance.repositories';
 import { Leave_Balance, NewLeave_Balance, UpdateLeave_Balance } from '../types/leavebalance.types';
 &nbsp;
 &nbsp;
-export const getEmployeeLeaveBalances = <span class="fstat-no" title="function not covered" >async </span>(employee_id: number): Promise&lt;Leave_Balance | null&gt; =&gt; {
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    return await LeaveBalanceRepository.getAllLeaveBalances(employee_id);</span>
+export const getEmployeeLeaveBalances = async (employee_id: number): Promise&lt;Leave_Balance | null&gt; =&gt; {
+  try {
+    return await LeaveBalanceRepository.getAllLeaveBalances(employee_id);
   } catch (error: any) {
 <span class="cstat-no" title="statement not covered" >    throw new Error(`Failed to get leave balances: ${error.message || error}`);</span>
   }
 };
 &nbsp;
-export const createInitialBalance = <span class="fstat-no" title="function not covered" >async </span>(employee_id: number, balance_days: number ): Promise&lt;Leave_Balance&gt; =&gt; {
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    return await LeaveBalanceRepository.create(employee_id, balance_days);</span>
+export const createInitialBalance = async (employee_id: number, balance_days: number ): Promise&lt;Leave_Balance&gt; =&gt; {
+  try {
+    return await LeaveBalanceRepository.create(employee_id, balance_days);
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    throw new Error(`Failed to create leave balance: ${error}`);</span>
   }
@@ -217,27 +217,27 @@ export const addLeaveDays = <span class="fstat-no" title="function not covered" 
   }
 };
 &nbsp;
-export const updateLeaveBalance = <span class="fstat-no" title="function not covered" >async </span>(balance_id: number, balance_days: number): Promise&lt;Leave_Balance&gt; =&gt; {
-<span class="cstat-no" title="statement not covered" >   try {</span>
-<span class="cstat-no" title="statement not covered" >     return await LeaveBalanceRepository.updateBalance(balance_id, balance_days);</span>
+export const updateLeaveBalance = async (balance_id: number, balance_days: number): Promise&lt;Leave_Balance&gt; =&gt; {
+   try {
+     return await LeaveBalanceRepository.updateBalance(balance_id, balance_days);
    } catch (error) {
 <span class="cstat-no" title="statement not covered" >     throw new Error(`Failed to update leave balance: ${error}`);</span>
    }
 };
 &nbsp;
-export const getAllBalances = <span class="fstat-no" title="function not covered" >async </span>(): Promise&lt;Leave_Balance[]&gt; =&gt; {
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    return await LeaveBalanceRepository.findAll();</span>
+export const getAllBalances = async (): Promise&lt;Leave_Balance[]&gt; =&gt; {
+  try {
+    return await LeaveBalanceRepository.findAll();
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    throw new Error(`Failed to fetch all leave balances: ${error}`);</span>
   }
 };
 &nbsp;
-export const deleteLeaveBalance = <span class="fstat-no" title="function not covered" >async </span>(balance_id: number) =&gt; {
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    return await LeaveBalanceRepository.deleteLeaveBalance(balance_id);</span>
+export const deleteLeaveBalance = async (balance_id: number) =&gt; {
+  try {
+    return await LeaveBalanceRepository.deleteLeaveBalance(balance_id);
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    throw new Error(`Failed to delete leave balance: ${error}`);</span>
+    throw new Error(`Failed to delete leave balance: ${error}`);
   }
 };
 &nbsp;</pre></td></tr></table></pre>
@@ -247,7 +247,7 @@ export const deleteLeaveBalance = <span class="fstat-no" title="function not cov
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-10T08:31:23.095Z
+                at 2025-12-11T09:13:26.657Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.3% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/26</span>
+                <span class='fraction'>26/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/21</span>
+                <span class='fraction'>21/21</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -102,71 +102,71 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as leaveTypeRepository from '../repositories/leave_types.repositories';
 import { NewLeaveType, UpdateLeaveType,LeaveType } from '../types/leave_types.types';
 &nbsp;
-export const listLeaveTypes = <span class="fstat-no" title="function not covered" >async </span>() =&gt; {
-<span class="cstat-no" title="statement not covered" >    return await leaveTypeRepository.getAllLeaveTypes();</span>
+export const listLeaveTypes = async () =&gt; {
+    return await leaveTypeRepository.getAllLeaveTypes();
 };
 &nbsp;
-export const getLeaveType = <span class="fstat-no" title="function not covered" >async </span>(leave_type_id: number) =&gt; {
-    const leaveType = <span class="cstat-no" title="statement not covered" >await leaveTypeRepository.getLeaveTypeById(leave_type_id);</span>
-<span class="cstat-no" title="statement not covered" >    if (!leaveType) {</span>
-<span class="cstat-no" title="statement not covered" >        throw new Error('Leave type not found');</span>
+export const getLeaveType = async (leave_type_id: number) =&gt; {
+    const leaveType = await leaveTypeRepository.getLeaveTypeById(leave_type_id);
+    if (!leaveType) {
+        throw new Error('Leave type not found');
     }
-<span class="cstat-no" title="statement not covered" >    return leaveType;</span>
+    return leaveType;
 };
 &nbsp;
-export const createLeaveType = <span class="fstat-no" title="function not covered" >async </span>(leaveType: NewLeaveType) =&gt; {
-<span class="cstat-no" title="statement not covered" >    return await leaveTypeRepository.createLeaveType(leaveType);</span>
+export const createLeaveType = async (leaveType: NewLeaveType) =&gt; {
+    return await leaveTypeRepository.createLeaveType(leaveType);
 };
 &nbsp;
-export const updateLeaveType = <span class="fstat-no" title="function not covered" >async </span>(leave_type_id: number, leaveType: UpdateLeaveType) =&gt; {
-    const existingLeaveType = <span class="cstat-no" title="statement not covered" >await leaveTypeRepository.getLeaveTypeById(leave_type_id);</span>
-<span class="cstat-no" title="statement not covered" >    if (!existingLeaveType) {</span>
-<span class="cstat-no" title="statement not covered" >        throw new Error('Leave type not found');</span>
+export const updateLeaveType = async (leave_type_id: number, leaveType: UpdateLeaveType) =&gt; {
+    const existingLeaveType = await leaveTypeRepository.getLeaveTypeById(leave_type_id);
+    if (!existingLeaveType) {
+        throw new Error('Leave type not found');
     }
-<span class="cstat-no" title="statement not covered" >    return await leaveTypeRepository.updateLeaveType(leave_type_id, leaveType);</span>
+    return await leaveTypeRepository.updateLeaveType(leave_type_id, leaveType);
 };
 &nbsp;
-export const deleteLeaveType = <span class="fstat-no" title="function not covered" >async </span>(leave_type_id: number) =&gt; {
-    const existingLeaveType = <span class="cstat-no" title="statement not covered" >await leaveTypeRepository.getLeaveTypeById(leave_type_id);</span>
-<span class="cstat-no" title="statement not covered" >    if (!existingLeaveType) {</span>
-<span class="cstat-no" title="statement not covered" >        throw new Error('Leave type not found');</span>
+export const deleteLeaveType = async (leave_type_id: number) =&gt; {
+    const existingLeaveType = await leaveTypeRepository.getLeaveTypeById(leave_type_id);
+    if (!existingLeaveType) {
+        throw new Error('Leave type not found');
     }
-<span class="cstat-no" title="statement not covered" >    await leaveTypeRepository.deleteLeaveType(leave_type_id);</span>
-<span class="cstat-no" title="statement not covered" >    return { message: 'Leave type deleted successfully' };</span>
+    await leaveTypeRepository.deleteLeaveType(leave_type_id);
+    return { message: 'Leave type deleted successfully' };
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -175,7 +175,7 @@ export const deleteLeaveType = <span class="fstat-no" title="function not covere
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-10T08:31:23.095Z
+                at 2025-12-11T09:13:26.657Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

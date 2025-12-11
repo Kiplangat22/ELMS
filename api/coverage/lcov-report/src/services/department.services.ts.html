@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">52.63% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/15</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -107,27 +107,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -135,8 +123,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,25 +145,25 @@
 import sql from "mssql";
 &nbsp;
 // READ - Get all departments
-export const getDepartmentsService = <span class="fstat-no" title="function not covered" >async </span>() =&gt; {
-  const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
-  const result = <span class="cstat-no" title="statement not covered" >await pool.request().query("SELECT * FROM Departments");</span>
-<span class="cstat-no" title="statement not covered" >  return result.recordset;</span>
+export const getDepartmentsService = async () =&gt; {
+  const pool = await getPool();
+  const result = await pool.request().query("SELECT * FROM Departments");
+  return result.recordset;
 };
 &nbsp;
 // CREATE - Add a new department
-export const createDepartmentService = <span class="fstat-no" title="function not covered" >async </span>(department_name: string) =&gt; {
-  const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
-<span class="cstat-no" title="statement not covered" >  await pool</span>
+export const createDepartmentService = async (department_name: string) =&gt; {
+  const pool = await getPool();
+  await pool
     .request()
     .input("department_name", sql.VarChar, department_name)
     .query("INSERT INTO Departments (department_name) VALUES (@department_name)");
 };
 &nbsp;
 // UPDATE - Modify an existing department
-export const updateDepartmentService = <span class="fstat-no" title="function not covered" >async </span>(id: number, department_name: string) =&gt; {
-  const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
-<span class="cstat-no" title="statement not covered" >  await pool</span>
+export const updateDepartmentService = async (id: number, department_name: string) =&gt; {
+  const pool = await getPool();
+  await pool
     .request()
     .input("department_id", sql.Int, id)
     .input("department_name", sql.VarChar, department_name)
@@ -173,9 +173,9 @@ export const updateDepartmentService = <span class="fstat-no" title="function no
 };
 &nbsp;
 // DELETE - Remove a department
-export const deleteDepartmentService = <span class="fstat-no" title="function not covered" >async </span>(id: number) =&gt; {
-  const pool = <span class="cstat-no" title="statement not covered" >await getPool();</span>
-<span class="cstat-no" title="statement not covered" >  await pool</span>
+export const deleteDepartmentService = async (id: number) =&gt; {
+  const pool = await getPool();
+  await pool
     .request()
     .input("department_id", sql.Int, id)
     .query("DELETE FROM Departments WHERE department_id = @department_id");
@@ -187,7 +187,7 @@ export const deleteDepartmentService = <span class="fstat-no" title="function no
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-10T08:31:23.095Z
+                at 2025-12-11T09:13:26.657Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

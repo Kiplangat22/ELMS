@@ -41,12 +41,12 @@ export const Login = () => {
             dispatch(loginSuccess(response));
             toast.success("Login successful!");
 
-            // // Navigate based on role
-            // if (response.user.role === 'admin') {
-            //     navigate('/admin/dashboard/todos');
-            // } else if (response.user.role === 'user') {
-            //     navigate('/user/dashboard/todos');
-            // }
+            // Navigate based on role
+            if (response.user.role === 'admin') {
+                navigate('/admin/dashboard/admindashboard');
+            } else if (response.user.role === 'user') {
+                navigate('/user/dashboard/UserDashboardHome');
+            }
         } catch (error) {
             console.log("Login error:", error);
             toast.error("Login failed. Please check your credentials.");

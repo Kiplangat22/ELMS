@@ -1,7 +1,9 @@
 import { createBrowserRouter } from 'react-router';
 import { RouterProvider } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
 import type { RootState } from './app/store';
+// import type { UserState } from './features/auth/userSlice';
 
 import Error from './components/Error';
 import { Register } from "./components/auth/Register";
@@ -14,24 +16,29 @@ import { Toaster } from 'sonner';
 
 import AdminDashboard from './dashboard/AdminDashboard/content/AdminDashboard';
 import UserDashboard from './dashboard/UserDashboard/content/userDashboard';
+import ApproveLeave from './dashboard/AdminDashboard/content/ApproveLeave';
 
-// import LeaveRequests from './dashboard/AdminDashboard/content/LeaveRequests';
-// import ApproveLeave from './dashboard/AdminDashboard/content/ApproveLeave';
-// import Employees from './dashboard/AdminDashboard/content/Employees';
-// import Profile from './components/profile/Profile';
+import LeaveRequests from './dashboard/AdminDashboard/content/LeaveRequests';
+import Profile from './components/profile/Profile';
 
+import MyLeaves from './dashboard/UserDashboard/content/MyLeaves';
+import ApplyLeave from './pages/user/ApplyLeave';
+import UserRequests from './pages/user/UserRequest';
+import UserDashboardHome from './pages/user/UserDashboardHome';
+
+// Admin components
+import LeaveBalanceComponent from './dashboard/AdminDashboard/content/Leave/LeaveBalance';
+import Users from './dashboard/AdminDashboard/content/users/users';
+import Departments from './dashboard/AdminDashboard/content/departments/Department';
+import LeaveTypes from './dashboard/AdminDashboard/content/Leave/LeaveType';
 // import MyLeaves from './dashboard/UserDashboard/content/MyLeaves';
-// import ApplyLeave from './dashboard/UserDashboard/content/ApplyLeave';
 
 function App() {
   const user = useSelector((state: RootState) => state.user.user);
-  // const isAdmin = user?.role === 'admin';
-  // const isUser = user?.role === 'user';
+  const isAdmin = user?.role === 'admin';
+  const isUser = user?.role === 'user';
 
-  const isAdmin = true;  // Set true to see admin dashboard
-  const isUser = true; 
-
-  const router = createBrowserRouter([
+  const router = useMemo(() => createBrowserRouter([
     {
       path: '/',
       element: <LandingPage />
@@ -67,16 +74,28 @@ function App() {
       element: isAdmin ? <AdminDashboard /> : <Login />,
       children: [
         {
+          path: 'leave-balances',
+          element: <LeaveBalanceComponent />
+        },
+        {
           path: 'leave-requests',
-          element: <h1>Leave Requests</h1> 
+          element: <LeaveRequests />
         },
         {
           path: 'approve-leave',
-          element: <h1>Approve Leave</h1>
+          element: <ApproveLeave />
         },
         {
           path: 'employees',
-          element: <h1>Employees</h1>
+          element: <Users />
+        },
+        {
+          path: 'departments',
+          element: <Departments />
+        },
+        {
+          path: 'leave-types',
+          element: <LeaveTypes />
         },
         {
           path: 'analytics',
@@ -84,11 +103,11 @@ function App() {
         },
         {
           path: 'profile',
-          element: <h1>Profile</h1>
+          element: <Profile />
         },
         {
           path: '',
-          element: <h1>Leave Requests</h1> // default admin page
+          element: <LeaveRequests /> // default admin page
         }
       ]
     },
@@ -99,25 +118,29 @@ function App() {
       element: isUser ? <UserDashboard /> : <Login />,
       children: [
         {
+          path: 'my-leaves',
+          element: <MyLeaves />
+        },
+        {
           path: 'leave-requests',
-          element: <h1>My Leaves Requests</h1>
+          element: <UserRequests />
         },
         {
           path: 'apply-leave',
-          element: <h1>Apply Leave</h1>
+          element: <ApplyLeave />
         },
         {
-          path: 'Profile',
-          element: <h1>Profile</h1>
+          path: 'profile',
+          element: <Profile />
         },
         {
           path: '',
-          element: <h1>My Leaves</h1> // default user page
+          element: <UserDashboardHome /> // default user page
         }
       ]
     }
 
-  ]);
+  ]), [isAdmin, isUser]);
 
   return (
     <>

@@ -29,7 +29,7 @@ export const leaveBalanceAPI = createApi({
     }),
 
     // GET balance by employee_id
-    getEmployeeBalance: builder.query({
+    getEmployeeBalance: builder.query<LeaveBalance, number>({
       query: (employee_id) => `/${employee_id}`,
       providesTags: ["LeaveBalance"],
     }),

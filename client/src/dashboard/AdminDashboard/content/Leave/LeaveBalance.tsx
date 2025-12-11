@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useGetAllBalancesQuery, useCreateLeaveBalanceMutation, useUpdateLeaveBalanceMutation, LeaveBalance } from "../../../../features/leave/leaveBalanceAPI";
 import { toast } from "sonner";
 
-export default function LeaveBalances() {
+export default function LeaveBalanceComponent() {
   const { data, isLoading, error, refetch } = useGetAllBalancesQuery();
   const balances = data ?? [];
   const [createBalance] = useCreateLeaveBalanceMutation();
