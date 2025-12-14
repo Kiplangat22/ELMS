@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1765444406945" clover="3.2.0">
-  <project timestamp="1765444406946" name="All files">
-    <metrics statements="962" coveredstatements="558" conditionals="215" coveredconditionals="80" methods="142" coveredmethods="72" elements="1319" coveredelements="710" complexity="0" loc="962" ncloc="962" packages="8" files="33" classes="33"/>
+<coverage generated="1765491739331" clover="3.2.0">
+  <project timestamp="1765491739331" name="All files">
+    <metrics statements="962" coveredstatements="512" conditionals="215" coveredconditionals="73" methods="142" coveredmethods="62" elements="1319" coveredelements="647" complexity="0" loc="962" ncloc="962" packages="8" files="33" classes="33"/>
     <package name="src">
       <metrics statements="44" coveredstatements="30" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="1"/>
       <file name="index.ts" path="C:\Users\Brian Kimurgor\Desktop\ELMS-fulstack\api\src\index.ts">
@@ -56,7 +56,7 @@
       </file>
     </package>
     <package name="src.controllers">
-      <metrics statements="373" coveredstatements="155" conditionals="122" coveredconditionals="29" methods="44" coveredmethods="17"/>
+      <metrics statements="373" coveredstatements="124" conditionals="122" coveredconditionals="22" methods="44" coveredmethods="12"/>
       <file name="auth.controllers.ts" path="C:\Users\Brian Kimurgor\Desktop\ELMS-fulstack\api\src\controllers\auth.controllers.ts">
         <metrics statements="28" coveredstatements="5" conditionals="12" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="2" count="3" type="stmt"/>
@@ -202,12 +202,12 @@
         <line num="147" count="3" type="stmt"/>
       </file>
       <file name="leave_balance.controllers.ts" path="C:\Users\Brian Kimurgor\Desktop\ELMS-fulstack\api\src\controllers\leave_balance.controllers.ts">
-        <metrics statements="44" coveredstatements="35" conditionals="10" coveredconditionals="8" methods="5" coveredmethods="5"/>
+        <metrics statements="44" coveredstatements="34" conditionals="10" coveredconditionals="8" methods="5" coveredmethods="5"/>
         <line num="2" count="3" type="stmt"/>
         <line num="5" count="3" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="16" count="3" type="stmt"/>
@@ -358,49 +358,49 @@
         <line num="329" count="0" type="stmt"/>
       </file>
       <file name="leave_types.controller.ts" path="C:\Users\Brian Kimurgor\Desktop\ELMS-fulstack\api\src\controllers\leave_types.controller.ts">
-        <metrics statements="43" coveredstatements="36" conditionals="14" coveredconditionals="7" methods="5" coveredmethods="5"/>
+        <metrics statements="43" coveredstatements="6" conditionals="14" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="2" count="3" type="stmt"/>
         <line num="5" count="3" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="14" count="3" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="18" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="22" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="23" count="0" type="stmt"/>
-        <line num="24" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="33" count="3" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
         <line num="43" count="3" type="stmt"/>
-        <line num="44" count="3" type="stmt"/>
-        <line num="45" count="3" type="stmt"/>
-        <line num="46" count="3" type="stmt"/>
-        <line num="47" count="3" type="stmt"/>
-        <line num="48" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="52" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="52" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="53" count="0" type="stmt"/>
-        <line num="54" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="55" count="2" type="stmt"/>
+        <line num="54" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="55" count="0" type="stmt"/>
         <line num="57" count="0" type="stmt"/>
         <line num="62" count="3" type="stmt"/>
-        <line num="63" count="3" type="stmt"/>
-        <line num="64" count="3" type="stmt"/>
-        <line num="65" count="3" type="stmt"/>
-        <line num="66" count="1" type="stmt"/>
-        <line num="68" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="69" count="2" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="68" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="69" count="0" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
       </file>
       <file name="notifications.controller.ts" path="C:\Users\Brian Kimurgor\Desktop\ELMS-fulstack\api\src\controllers\notifications.controller.ts">
@@ -468,9 +468,9 @@
         <line num="23" count="9" type="stmt"/>
         <line num="28" count="9" type="stmt"/>
         <line num="48" count="9" type="stmt"/>
-        <line num="49" count="39" type="stmt"/>
-        <line num="50" count="39" type="stmt"/>
-        <line num="51" count="39" type="stmt"/>
+        <line num="49" count="27" type="stmt"/>
+        <line num="50" count="27" type="stmt"/>
+        <line num="51" count="26" type="stmt"/>
         <line num="53" count="0" type="stmt"/>
         <line num="54" count="0" type="stmt"/>
       </file>
@@ -535,15 +535,15 @@
       <file name="loggers.ts" path="C:\Users\Brian Kimurgor\Desktop\ELMS-fulstack\api\src\middleware\loggers.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="4" count="3" type="stmt"/>
-        <line num="5" count="37" type="stmt"/>
-        <line num="7" count="37" type="stmt"/>
-        <line num="8" count="37" type="stmt"/>
-        <line num="9" count="37" type="stmt"/>
-        <line num="12" count="37" type="stmt"/>
+        <line num="5" count="27" type="stmt"/>
+        <line num="7" count="27" type="stmt"/>
+        <line num="8" count="26" type="stmt"/>
+        <line num="9" count="26" type="stmt"/>
+        <line num="12" count="27" type="stmt"/>
       </file>
     </package>
     <package name="src.repositories">
-      <metrics statements="180" coveredstatements="86" conditionals="17" coveredconditionals="4" methods="38" coveredmethods="15"/>
+      <metrics statements="180" coveredstatements="71" conditionals="17" coveredconditionals="4" methods="38" coveredmethods="10"/>
       <file name="department.repositories.ts" path="C:\Users\Brian Kimurgor\Desktop\ELMS-fulstack\api\src\repositories\department.repositories.ts">
         <metrics statements="27" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
@@ -613,7 +613,7 @@
         <line num="119" count="0" type="stmt"/>
       </file>
       <file name="leave_balance.repositories.ts" path="C:\Users\Brian Kimurgor\Desktop\ELMS-fulstack\api\src\repositories\leave_balance.repositories.ts">
-        <metrics statements="31" coveredstatements="25" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="5"/>
+        <metrics statements="31" coveredstatements="24" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="5"/>
         <line num="1" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
@@ -638,7 +638,7 @@
         <line num="86" count="4" type="stmt"/>
         <line num="87" count="1" type="stmt"/>
         <line num="88" count="1" type="stmt"/>
-        <line num="98" count="1" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
         <line num="102" count="4" type="stmt"/>
         <line num="103" count="2" type="stmt"/>
         <line num="104" count="2" type="stmt"/>
@@ -691,27 +691,27 @@
         <line num="172" count="0" type="stmt"/>
       </file>
       <file name="leave_types.repositories.ts" path="C:\Users\Brian Kimurgor\Desktop\ELMS-fulstack\api\src\repositories\leave_types.repositories.ts">
-        <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <metrics statements="20" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
-        <line num="11" count="8" type="stmt"/>
-        <line num="12" count="8" type="stmt"/>
-        <line num="16" count="8" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
         <line num="20" count="4" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
         <line num="31" count="4" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
         <line num="43" count="4" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
       </file>
       <file name="notifications.repositories.ts" path="C:\Users\Brian Kimurgor\Desktop\ELMS-fulstack\api\src\repositories\notifications.repositories.ts">
         <metrics statements="26" coveredstatements="7" conditionals="8" coveredconditionals="0" methods="6" coveredmethods="0"/>
@@ -1033,25 +1033,25 @@
         <metrics statements="21" coveredstatements="21" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="5"/>
         <line num="1" count="4" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="10" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
         <line num="16" count="4" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
         <line num="20" count="4" type="stmt"/>
-        <line num="21" count="5" type="stmt"/>
-        <line num="22" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
         <line num="28" count="4" type="stmt"/>
-        <line num="29" count="5" type="stmt"/>
-        <line num="30" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="31" count="3" type="stmt"/>
-        <line num="33" count="2" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
       </file>
       <file name="notifications.services.ts" path="C:\Users\Brian Kimurgor\Desktop\ELMS-fulstack\api\src\services\notifications.services.ts">
         <metrics statements="30" coveredstatements="10" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="0"/>

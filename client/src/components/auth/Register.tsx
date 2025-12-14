@@ -3,8 +3,9 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { usersAPI } from "../../features/auth/userAPI";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "sonner";
+import { Footer } from "../footer/Footer";
 
 type RegisterInputs = {
   first_name: string;
@@ -40,7 +41,7 @@ export const Register = () => {
       await createUser(data).unwrap();
       toast.success("Registration successful! Please check your email to verify your account.");
       setTimeout(() => {
-        navigate("/register/y", { state: { email: data.email } });
+        navigate("/verify", { state: { email: data.email } });
       }, 1500);
     } catch (error) {
       console.error(error);
@@ -55,35 +56,36 @@ export const Register = () => {
         <div className="w-full max-w-lg p-8 rounded-xl shadow-lg bg-white">
           <h1 className="text-3xl font-bold mb-6 text-center text-gray-700">Employee Registration</h1>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <input {...register("first_name")} placeholder="First Name" className="input input-bordered w-full" />
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" data-cy="register-form">
+            <input {...register("first_name")} placeholder="First Name" className="input input-bordered w-full" data-cy="first-name-input" />
             <p className="text-error text-sm">{errors.first_name?.message}</p>
 
-            <input {...register("last_name")} placeholder="Last Name" className="input input-bordered w-full" />
+            <input {...register("last_name")} placeholder="Last Name" className="input input-bordered w-full" data-cy="last-name-input" />
             <p className="text-error text-sm">{errors.last_name?.message}</p>
 
-            <input {...register("email")} type="email" placeholder="Email" className="input input-bordered w-full" />
+            <input {...register("email")} type="email" placeholder="Email" className="input input-bordered w-full" data-cy="email-input" />
             <p className="text-error text-sm">{errors.email?.message}</p>
 
-            <input {...register("department")} placeholder="Department" className="input input-bordered w-full" />
+            <input {...register("department")} placeholder="Department" className="input input-bordered w-full" data-cy="department-input" />
             <p className="text-error text-sm">{errors.department?.message}</p>
 
-            <input {...register("password")} type="password" placeholder="Password" className="input input-bordered w-full" />
+            <input {...register("password")} type="password" placeholder="Password" className="input input-bordered w-full" data-cy="password-input" />
             <p className="text-error text-sm">{errors.password?.message}</p>
 
-            <input {...register("confirmPassword")} type="password" placeholder="Confirm Password" className="input input-bordered w-full" />
+            <input {...register("confirmPassword")} type="password" placeholder="Confirm Password" className="input input-bordered w-full" data-cy="confirm-password-input" />
             <p className="text-error text-sm">{errors.confirmPassword?.message}</p>
 
-            <button type="submit" className="btn btn-primary w-full mt-4" disabled={isLoading}>
+            <button type="submit" className="btn btn-primary w-full mt-4" disabled={isLoading} data-cy="register-btn">
               {isLoading ? <span className="loading loading-spinner text-white" /> : "Register"}
             </button>
           </form>
 
           <p className="mt-6 text-center text-gray-600">
-            Already have an account? <a href="/login" className="text-blue-600 hover:underline">Login</a>
+            Already have an account? <Link to="/login" className="text-blue-600 hover:underline">Login</Link>
           </p>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

@@ -1,146 +1,97 @@
+// App.tsx
 import { createBrowserRouter } from 'react-router';
-import { RouterProvider } from 'react-router-dom';
+import { RouterProvider, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import type { RootState } from './app/store';
-// import type { UserState } from './features/auth/userSlice';
 
 import Error from './components/Error';
 import { Register } from "./components/auth/Register";
 import { Login } from './components/auth/Login';
 import LandingPage from './pages/LandingPage';
 import { AboutPage } from "./pages/AboutPage";
-import { Verification } from './components/auth/Verification';
-import Services from './components/Services';
+import ServicesPage from './pages/ServicesPage';
 import { Toaster } from 'sonner';
+import { Verification } from './components/auth/Verification';
+import AdminSummary from './dashboard/AdminDashboard/content/AdminSummary';
+import Analytics from './dashboard/AdminDashboard/content/Analytics';
 
 import AdminDashboard from './dashboard/AdminDashboard/content/AdminDashboard';
-import UserDashboard from './dashboard/UserDashboard/content/userDashboard';
+import UserDashboardLayout from './dashboard/UserDashboard/UserDashboardLayout';
+import UserDashboardHome from './dashboard/UserDashboard/UserDashboardHome';
 import ApproveLeave from './dashboard/AdminDashboard/content/ApproveLeave';
-
 import LeaveRequests from './dashboard/AdminDashboard/content/LeaveRequests';
 import Profile from './components/profile/Profile';
-
 import MyLeaves from './dashboard/UserDashboard/content/MyLeaves';
 import ApplyLeave from './pages/user/ApplyLeave';
 import UserRequests from './pages/user/UserRequest';
-import UserDashboardHome from './pages/user/UserDashboardHome';
-
-// Admin components
 import LeaveBalanceComponent from './dashboard/AdminDashboard/content/Leave/LeaveBalance';
 import Users from './dashboard/AdminDashboard/content/users/users';
 import Departments from './dashboard/AdminDashboard/content/departments/Department';
 import LeaveTypes from './dashboard/AdminDashboard/content/Leave/LeaveType';
-// import MyLeaves from './dashboard/UserDashboard/content/MyLeaves';
+
+// Protected Route Wrapper
+function ProtectedRoute({ user, role, children }: { user: any; role: string; children: React.ReactElement }) {
+  if (!user || user.role !== role) return <Navigate to="/login" replace />;
+  return children;
+}
 
 function App() {
   const user = useSelector((state: RootState) => state.user.user);
-  const isAdmin = user?.role === 'admin';
-  const isUser = user?.role === 'user';
 
   const router = useMemo(() => createBrowserRouter([
-    {
-      path: '/',
-      element: <LandingPage />
-    },
-    {
-      path: '/about',
-      element: <AboutPage />
-    },
-    {
-      path: '/services',
-      element: <Services />
-    },
-    {
-      path: '/register',
-      element: <Register />
-    },
-    {
-      path: '/login',
-      element: <Login />
-    },
-    {
-      path: '/verify',
-      element: <Verification />
-    },
-    {
-      path: '*',
-      element: <Error />
-    },
+    { path: '/', element: <LandingPage /> },
+    { path: '/about', element: <AboutPage /> },
+    { path: '/services', element: <ServicesPage /> },
+    { path: '/register', element: <Register /> },
+    { path: '/verify', element: <Verification /> },
+    { path: '/login', element: <Login /> },
+    { path: '/dashboard', element: user ? (user.role === 'admin' ? <Navigate to="/admin/dashboard/" replace /> : <Navigate to="/user/dashboard/" replace />) : <Navigate to="/login" replace /> },
+    { path: '/admin/dashboard', element: <Navigate to="/admin/dashboard/" replace /> },
+    { path: '/employees', element: <Navigate to="/admin/dashboard/users" replace /> },
+    { path: '/leave-requests', element: <Navigate to="/admin/dashboard/leave-requests" replace /> },
+    { path: '/leave-types', element: <Navigate to="/admin/dashboard/leave-types" replace /> },
+    { path: '*', element: <Error /> },
 
-    // admin dashboard
+    // Admin dashboard
     {
       path: '/admin/dashboard/',
-      element: isAdmin ? <AdminDashboard /> : <Login />,
+      element: (
+        <ProtectedRoute user={user} role="admin">
+          <AdminDashboard />
+        </ProtectedRoute>
+      ),
       children: [
-        {
-          path: 'leave-balances',
-          element: <LeaveBalanceComponent />
-        },
-        {
-          path: 'leave-requests',
-          element: <LeaveRequests />
-        },
-        {
-          path: 'approve-leave',
-          element: <ApproveLeave />
-        },
-        {
-          path: 'employees',
-          element: <Users />
-        },
-        {
-          path: 'departments',
-          element: <Departments />
-        },
-        {
-          path: 'leave-types',
-          element: <LeaveTypes />
-        },
-        {
-          path: 'analytics',
-          element: <h1>Our analytics</h1>
-        },
-        {
-          path: 'profile',
-          element: <Profile />
-        },
-        {
-          path: '',
-          element: <LeaveRequests /> // default admin page
-        }
+        { path: '', element: <AdminSummary /> }, // default admin page
+        { path: 'leave-balances', element: <LeaveBalanceComponent /> },
+        { path: 'leave-requests', element: <LeaveRequests /> },
+        { path: 'approve-leave', element: <ApproveLeave /> },
+        { path: 'users', element: <Users /> },
+        { path: 'departments', element: <Departments /> },
+        { path: 'leave-types', element: <LeaveTypes /> },
+        { path: 'analytics', element: <Analytics /> },
+        { path: 'profile', element: <Profile /> }
       ]
     },
 
-    // user dashboard
+    // User dashboard (clean, one main layout)
     {
       path: '/user/dashboard/',
-      element: isUser ? <UserDashboard /> : <Login />,
+      element: (
+        <ProtectedRoute user={user} role="user">
+          <UserDashboardLayout />
+        </ProtectedRoute>
+      ),
       children: [
-        {
-          path: 'my-leaves',
-          element: <MyLeaves />
-        },
-        {
-          path: 'leave-requests',
-          element: <UserRequests />
-        },
-        {
-          path: 'apply-leave',
-          element: <ApplyLeave />
-        },
-        {
-          path: 'profile',
-          element: <Profile />
-        },
-        {
-          path: '',
-          element: <UserDashboardHome /> // default user page
-        }
+        { path: '', element: <UserDashboardHome /> }, // default page when they open dashboard
+        { path: 'my-leaves', element: <MyLeaves /> },
+        { path: 'leave-requests', element: <UserRequests /> },
+        { path: 'apply-leave', element: <ApplyLeave /> },
+        { path: 'profile', element: <Profile /> },
       ]
     }
 
-  ]), [isAdmin, isUser]);
+  ]), [user]);
 
   return (
     <>

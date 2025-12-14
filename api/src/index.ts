@@ -11,6 +11,8 @@ import LeaveRequestRoutes from './routers/leave_request.routes'
 import notificationRouter from './routers/notification.routes'
 import authRoutes from './routers/auth.routes'
 
+import cookieParser from "cookie-parser";
+
 dotenv.config()
 
 const initializeApp = () => {
@@ -23,10 +25,9 @@ const initializeApp = () => {
     }))
 
     app.use(express.json())
+    app.use(cookieParser());
 
-
-    // Routes using Router()
-
+    // API ROUTES
     app.use('/api/auth', authRoutes)
     app.use('/api/departments', departmentRoutes)
     app.use('/api/leave-types', LeaveTypeRoutes)
@@ -36,10 +37,9 @@ const initializeApp = () => {
     app.use('/api/notifications', notificationRouter)
 
    
-    employeesRoutes(app)
-    notificationRouter(app)
+    // employeesRoutes(app)
+    // notificationRouter(app)
 
-    // Root route
     app.get('/', (_, res) => {
         res.send("Welcome to the Employee Leave Management System API")
     })

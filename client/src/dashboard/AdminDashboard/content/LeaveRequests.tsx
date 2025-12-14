@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useGetAllLeaveRequestsQuery } from "../../../features/leave/LeaveRequestAPI";
+import { useGetAllRequestsQuery } from "../../../features/leave/LeaveRequestAPI";
 import { toast } from "sonner";
 
 const unwrap = (r: any) => r?.data ?? r ?? [];
 
 export default function LeaveRequests() {
-  const { data, isLoading, error, refetch } = useGetAllLeaveRequestsQuery();
+  const { data, isLoading, error, refetch } = useGetAllRequestsQuery();
   const leaveRequests = unwrap(data);
 
   return (
@@ -13,7 +13,7 @@ export default function LeaveRequests() {
       <h2 className="text-xl font-semibold mb-4">All Leave Requests</h2>
 
       <div className="bg-white shadow rounded overflow-hidden">
-        <table className="w-full">
+        <table className="w-full" data-cy="leave-requests-table">
           <thead className="bg-gray-100">
             <tr>
               <th className="p-3">ID</th>

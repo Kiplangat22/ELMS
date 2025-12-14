@@ -18,7 +18,7 @@ export default function Users() {
   const save = async () => {
     if (!editing) return;
     try {
-      await updateUser({ id: editing.id ?? editing.user_id, role }).unwrap();
+      await updateUser({ id: editing.id ?? editing.user_id, data: { role: role } }).unwrap();
       toast.success("Updated");
       refetch();
       (document.getElementById("user-modal") as HTMLDialogElement)?.close();
@@ -36,7 +36,7 @@ export default function Users() {
       <h2 className="text-xl font-semibold mb-4">Users</h2>
 
       <div className="bg-white shadow rounded overflow-hidden">
-        <table className="w-full">
+        <table className="w-full" data-cy="users-table">
           <thead className="bg-gray-100"><tr>
             <th className="p-3">ID</th><th className="p-3">Name</th><th className="p-3">Email</th><th className="p-3">Role</th><th className="p-3">Actions</th>
           </tr></thead>
@@ -62,7 +62,7 @@ export default function Users() {
         </table>
       </div>
 
-      <dialog id="user-modal" className="modal">
+      <dialog id="user-modal" className="modal" data-cy="user-modal">
         <form method="dialog" className="modal-box">
           <h3 className="font-bold text-lg">Update Role</h3>
           <div className="py-4">

@@ -152,3 +152,10 @@ INNER JOIN Employees e ON lb.employee_id = e.employee_id
 LEFT JOIN Departments d ON e.department_id = d.department_id
 ORDER BY e.last_name, e.first_name;
 
+
+UPDATE Employees
+SET role = 'admin',
+    is_verified = 1,
+    is_active = 1
+WHERE email = 'kiplangatkevin00@gmail.com';
+

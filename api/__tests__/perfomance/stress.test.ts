@@ -1,5 +1,5 @@
 
-// loa test
+// stress test
 import http from "k6/http";
 import { check, sleep } from "k6";
 
@@ -16,8 +16,7 @@ export const options = {
     http_req_failed: ["rate<0.2"],     // 20% error rate acceptable
   },
 };
-
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://127.0.0.1:3000";
 
 export default function () {
   const res = http.get(`${BASE_URL}/getAllEmployees`);

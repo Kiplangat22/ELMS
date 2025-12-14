@@ -1,16 +1,15 @@
-// import Navbar from "../components/nav/Navbar"
-// import {Footer} from "../components/footer/Footer"
-// // import { Services } from "../components/Services"
+import Navbar from "../components/nav/Navbar";
+import { Services } from "../components/Services";
+import { Footer } from "../components/footer/Footer";
 
+const ServicesPage = () => {
+    return (
+        <div>
+            <Navbar />
+            <Services />
+            <Footer />
+        </div>
+    );
+};
 
-// // const ServicesPage = () => {
-// //     return (
-// //         <div>
-// //             <Navbar />
-// //             <Services />
-// //             <Footer />
-// //         </div>
-// //     )
-// // }
-
-// // export default ServicesPage
+export default ServicesPage;

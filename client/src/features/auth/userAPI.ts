@@ -5,9 +5,9 @@ import { ApiDomain } from "../../utils/ApiDomain";
 
 // User Type
 export type TUser = {
-    id: number;
-    firstName: string;
-    lastName: string;
+    user_id: number;
+    first_name: string;
+    last_name: string;
     email: string;
     department?: string;
     role?: string;
@@ -67,21 +67,21 @@ export const usersAPI = createApi({
 
         // GET ALL USERS
         getUsers: builder.query<TUser[], void>({
-            query: () => '/users',
+            query: () => '/employees/getAllEmployees',
             providesTags: ['Users'],
         }),
 
         // GET USER BY ID
         getUserById: builder.query<TUser, number>({
-            query: (id) => `/users/${id}`,
+            query: (id) => `/employees/getEmployeeById/${id}`,
         }),
 
         // UPDATE USER
-        updateUser: builder.mutation<TUser, Partial<TUser> & { id: number }>({
-            query: (user) => ({
-                url: `/users/${user.id}`,
+        updateUser: builder.mutation<TUser, { id: number; data: Partial<TUser> }>({
+            query: ({ id, data }) => ({
+                url: `/employees/updateEmployee/${id}`,
                 method: 'PUT',
-                body: user,
+                body: data,
             }),
             invalidatesTags: ['Users'],
         }),
@@ -89,7 +89,7 @@ export const usersAPI = createApi({
         // DELETE USER
         deleteUser: builder.mutation<void, number>({
             query: (id) => ({
-                url: `/users/${id}`,
+                url: `/employees/deleteEmployees/${id}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ['Users'],

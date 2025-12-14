@@ -1,22 +1,27 @@
 export const userDrawerData = [
     {
-        id: 'MyLeaves',
-        name: 'My Leaves',
-        link: '/user/dashboard/myleaves',
+        id: 'overview',
+        name: 'Dashboard Overview',
+        link: '/user/dashboard/',
     },
     {
-        id: 'LeaveRequests',
+        id: 'balance',
+        name: 'My Leave Balance',
+        link: '/user/dashboard/my-leaves',
+    },
+    {
+        id: 'requests',
         name: 'My Leave Requests',
-        link: '/user/dashboard/leaverequests',
+        link: '/user/dashboard/leave-requests',
     },
     {
-        id: 'ApplyLeave',
-        name: 'Apply Leave',
+        id: 'apply',
+        name: 'Request Leave',
         link: '/user/dashboard/apply-leave',
     },
     {
-        id: 'Profile',
+        id: 'profile',
         name: 'Profile',
-        link: '/user/dashboard/Profile',
-    }
+        link: '/user/dashboard/profile',
+    },
 ];

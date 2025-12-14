@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../../features/auth/userSlice";
+import { logout } from "../../features/auth/userSlice";
 import { toast } from "sonner";
-import { useGetEmployeeBalanceQuery } from "../../../features/leave/leaveBalanceAPI";
-import { useGetMyLeaveRequestsQuery } from "../../../features/leave/LeaveRequestAPI";
-import type { RootState } from "../../../app/store";
+import { useGetEmployeeBalanceQuery } from "../../features/leave/leaveBalanceAPI";
+import { useGetMyLeaveRequestsQuery } from "../../features/leave/LeaveRequestAPI";
+import type { RootState } from "../../app/store";
 
-const UserDashboard = () => {
+const UserDashboardHome = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user.user);
@@ -115,4 +115,4 @@ const UserDashboard = () => {
   );
 };
 
-export default UserDashboard;
+export default UserDashboardHome;

@@ -2,28 +2,46 @@ import Navbar from "../nav/Navbar"
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { toast } from 'sonner';
+import { usersAPI } from '../../features/auth/userAPI';
+import { Footer } from '../footer/Footer';
 
 type VerifyInputs = {
     email: string;
-    code: number;
+    code: string;
 };
 
 const schema = yup.object({
     email: yup.string().email('Invalid email').max(100, 'Max 100 characters').required('Email is required'),
-    code: yup.number().min(6, 'Max 6 characters').required('Code is required'),
+    code: yup.string().length(6, 'Must be exactly 6 characters').required('Code is required'),
 });
 
 export const Verification = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const emailFromState = location.state?.email || '';
+
+    const [verifyUser, { isLoading }] = usersAPI.useVerifyUserMutation();
+
     const {
         register,
         handleSubmit,
         formState: { errors }
     } = useForm<VerifyInputs>({
-        resolver: yupResolver(schema)
+        resolver: yupResolver(schema),
+        defaultValues: { email: emailFromState }
     })
 
-    const onSubmit: SubmitHandler<VerifyInputs> = (data) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<VerifyInputs> = async (data) => {
+        try {
+            await verifyUser(data).unwrap();
+            toast.success("Account verified successfully! Please login.");
+            navigate("/login");
+        } catch (error) {
+            console.log("Verification error:", error);
+            toast.error("Verification failed. Please check your code.");
+        }
     }
 
     return (
@@ -44,7 +62,7 @@ export const Verification = () => {
                         )}
 
                         <input
-                            type="number"
+                            type="text"
                             {...register("code")}
                             placeholder="Verification Code"
                             className="input border border-gray-300 rounded w-full p-2 text-lg"
@@ -53,10 +71,13 @@ export const Verification = () => {
                             <span className="text-sm text-red-700">{errors.code.message}</span>
                         )}
 
-                        <button type="submit" className="btn btn-primary w-full mt-4">Verify your Account</button>
+                        <button type="submit" className="btn btn-primary w-full mt-4" disabled={isLoading}>
+                            {isLoading ? <span className="loading loading-spinner text-white" /> : "Verify your Account"}
+                        </button>
                     </form>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

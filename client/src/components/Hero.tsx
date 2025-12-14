@@ -1,6 +1,11 @@
 import homeIMG from "../assets/images/home.png";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import type { RootState } from "../app/store";
 
 export const Hero = () => {
+  const navigate = useNavigate();
+  const user = useSelector((state: RootState) => state.user.user);
   return (
     <section className="flex flex-col md:flex-row justify-between items-stretch gap-10 min-h-[80vh] p-6 md:p-12 bg-gradient-to-tr from-[#f5f7fa] via-[#c3cfe2] to-[#e2ebf0] text-gray-800">
 
@@ -16,7 +21,10 @@ export const Hero = () => {
             Empower your HR team with an intuitive dashboard, real-time leave tracking, and powerful reporting tools.
           </p>
 
-          <button className="self-start px-6 py-3 bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 rounded-full font-semibold text-white shadow-lg hover:scale-105 transition-transform duration-300">
+          <button
+            onClick={() => navigate(user ? "/dashboard" : "/register")}
+            className="self-start px-6 py-3 bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 rounded-full font-semibold text-white shadow-lg hover:scale-105 transition-transform duration-300"
+          >
             Get Started
           </button>
         </div>

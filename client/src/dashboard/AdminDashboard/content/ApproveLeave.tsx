@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useGetAllLeaveRequestsQuery, useApproveLeaveRequestMutation, useRejectLeaveRequestMutation } from "../../../features/leave/LeaveRequestAPI";
+import { useGetAllRequestsQuery, useApproveLeaveRequestMutation, useRejectLeaveRequestMutation } from "../../../features/leave/LeaveRequestAPI";
 import { toast } from "sonner";
 
 const unwrap = (r: any) => r?.data ?? r ?? [];
 
 export default function ApproveLeave() {
-  const { data, isLoading, error, refetch } = useGetAllLeaveRequestsQuery();
+  const { data, isLoading, error, refetch } = useGetAllRequestsQuery();
   const leaveRequests = unwrap(data);
   const [approveLeave] = useApproveLeaveRequestMutation();
   const [rejectLeave] = useRejectLeaveRequestMutation();

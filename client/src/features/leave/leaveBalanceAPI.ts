@@ -10,7 +10,7 @@ export type LeaveBalance = {
 export const leaveBalanceAPI = createApi({
   reducerPath: "leaveBalanceAPI",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${ApiDomain}/leave-balance`,
+    baseUrl: `${ApiDomain}/leave-balances`,
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as any).user?.token;
       if (token) headers.set("Authorization", `Bearer ${token}`);

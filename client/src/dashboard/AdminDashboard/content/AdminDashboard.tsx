@@ -4,6 +4,7 @@ import { AdminDrawer } from "../aside/AdminDrawer";
 import { FaBars } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
+import { Footer } from "../../../components/footer/Footer";
 
 const AdminDashboard = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -59,6 +60,7 @@ const AdminDashboard = () => {
                     <Outlet />
                 </main>
             </div>
+            <Footer />
         </div>
     );
 };

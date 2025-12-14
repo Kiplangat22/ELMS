@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ApiDomain } from "../../utils/ApiDomain";
-import type { RootState } from "../../app/store";
 
 export type TypeLeaveRequest = {
   request_id: number;
@@ -14,17 +13,12 @@ export type TypeLeaveRequest = {
   requested_at: string;
 };
 
-export type NewLeaveRequest = {
-  leave_type_id: number;
-  start_date: string;
-  end_date: string;
-  justification: string;
-};
+export type NewLeaveRequest = Omit<TypeLeaveRequest, 'request_id' | 'employee_id' | 'total_days' | 'status' | 'requested_at'>;
 
 export const leaveRequestAPI = createApi({
   reducerPath: "leaveRequestAPI",
   baseQuery: fetchBaseQuery({
-    baseUrl: ApiDomain,
+    baseUrl: `${ApiDomain}/leave-requests`,
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as any).user?.token;
       if (token) headers.set("Authorization", `Bearer ${token}`);
@@ -33,40 +27,48 @@ export const leaveRequestAPI = createApi({
   }),
   tagTypes: ["LeaveRequests"],
   endpoints: (builder) => ({
-    applyLeave: builder.mutation<{ data: TypeLeaveRequest }, NewLeaveRequest>({
+    getMyLeaveRequests: builder.query<{ data: TypeLeaveRequest[] }, void>({
+      query: () => "/GetLeavReq",
+      providesTags: ["LeaveRequests"],
+    }),
+    createLeaveRequest: builder.mutation<{ data: TypeLeaveRequest }, Partial<TypeLeaveRequest>>({
       query: (data) => ({
-        url: "/leave-request/CreateLeaveReq",
+        url: "/CreateLeaveReq",
         method: "POST",
         body: data,
       }),
       invalidatesTags: ["LeaveRequests"],
     }),
-    getMyLeaveRequests: builder.query<{ data: TypeLeaveRequest[] }, void>({
-      query: () => "/leave-request/GetLeavReq",
+    getPendingRequests: builder.query<{ data: TypeLeaveRequest[] }, void>({
+      query: () => "/pending",
       providesTags: ["LeaveRequests"],
     }),
-    cancelLeaveRequest: builder.mutation<void, number>({
-      query: (request_id) => ({
-        url: `/leave-request/${request_id}/cancel`,
+    getAllRequests: builder.query<{ data: TypeLeaveRequest[] }, void>({
+      query: () => "/leaveReq",
+      providesTags: ["LeaveRequests"],
+    }),
+    getLeaveRequestById: builder.query<{ data: TypeLeaveRequest }, number>({
+      query: (id) => `/ReqById/${id}`,
+      providesTags: ["LeaveRequests"],
+    }),
+    approveLeaveRequest: builder.mutation<{ data: TypeLeaveRequest }, number>({
+      query: (id) => ({
+        url: `/${id}/approve`,
+        method: "PATCH",
+      }),
+      invalidatesTags: ["LeaveRequests"],
+    }),
+    rejectLeaveRequest: builder.mutation<{ data: TypeLeaveRequest }, number>({
+      query: (id) => ({
+        url: `/${id}/reject`,
+        method: "PATCH",
+      }),
+      invalidatesTags: ["LeaveRequests"],
+    }),
+    cancelLeaveRequest: builder.mutation<{ message: string }, number>({
+      query: (id) => ({
+        url: `/${id}/cancel`,
         method: "DELETE",
-      }),
-      invalidatesTags: ["LeaveRequests"],
-    }),
-    getAllLeaveRequests: builder.query<{ data: TypeLeaveRequest[] }, void>({
-      query: () => "/leave-request/all",
-      providesTags: ["LeaveRequests"],
-    }),
-    approveLeaveRequest: builder.mutation<void, number>({
-      query: (request_id) => ({
-        url: `/leave-request/${request_id}/approve`,
-        method: "PUT",
-      }),
-      invalidatesTags: ["LeaveRequests"],
-    }),
-    rejectLeaveRequest: builder.mutation<void, number>({
-      query: (request_id) => ({
-        url: `/leave-request/${request_id}/reject`,
-        method: "PUT",
       }),
       invalidatesTags: ["LeaveRequests"],
     }),
@@ -74,10 +76,12 @@ export const leaveRequestAPI = createApi({
 });
 
 export const {
-  useApplyLeaveMutation,
   useGetMyLeaveRequestsQuery,
-  useCancelLeaveRequestMutation,
-  useGetAllLeaveRequestsQuery,
+  useCreateLeaveRequestMutation,
+  useGetPendingRequestsQuery,
+  useGetAllRequestsQuery,
+  useGetLeaveRequestByIdQuery,
   useApproveLeaveRequestMutation,
   useRejectLeaveRequestMutation,
+  useCancelLeaveRequestMutation,
 } = leaveRequestAPI;

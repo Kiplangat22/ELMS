@@ -1,5 +1,5 @@
 import { useGetUsersQuery } from "../../../features/auth/userAPI";
-import { useGetAllLeaveRequestsQuery } from "../../../features/leave/LeaveRequestAPI";
+import { useGetAllRequestsQuery } from "../../../features/leave/LeaveRequestAPI";
 
 const unwrap = (r: any) => r?.data ?? r ?? [];
 
@@ -7,7 +7,7 @@ export default function Analytics() {
   const { data: usersData } = useGetUsersQuery();
   const users = unwrap(usersData);
 
-  const { data: requestsData } = useGetAllLeaveRequestsQuery();
+  const { data: requestsData } = useGetAllRequestsQuery();
   const requests = unwrap(requestsData);
 
   const totalUsers = users.length;

@@ -8,7 +8,7 @@ export const options = {
   duration: "1m",
 };
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://127.0.0.1:3000";
 
 export default function () {
   const res = http.get(`${BASE_URL}/getAllEmployees`);
